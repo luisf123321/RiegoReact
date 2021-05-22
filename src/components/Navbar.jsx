@@ -12,7 +12,7 @@ function Navbar(){
 
     const token = sessionStorage.getItem("token");
     
-    const na = token && token != '' && token!=undefined ? 
+    const na = token && token !== '' && token!=undefined ? 
                     <Link to="#" className="menu-bars" >
                         <boootsIcon.BsList onClick={showSidebar} />
                     </Link>

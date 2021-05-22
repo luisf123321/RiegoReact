@@ -10,10 +10,7 @@ import Estadisticas from './components/Estadisticas';
 class App extends Component{
 
 
-    render(){
-        
-        const token = sessionStorage.getItem("token");
-        
+    render(){        
         return(
             <BrowserRouter>
                 <Navbar />

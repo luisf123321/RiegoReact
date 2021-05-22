@@ -7,16 +7,16 @@ class Calendario extends Component{
 
     constructor(props){
         super(props);
-        this.onChange = this.onChange.bind(this)
+        //this.onChange = this.onChange.bind(this)
     }
-
+    /*
     onChange(event){
         const target = event.target;
         const value = target.value;
         this.state.value = value;
         this.setState({value})
     }
-
+    */
     state = {
         value:new Date()
     }
@@ -29,9 +29,9 @@ class Calendario extends Component{
                     
                         <Calendar
                             
-                            onChange={this.onChange}
-                            showWeekNumbers
-                            value={this.state.value}
+                            //onChange={this.onChange}
+                            //showWeekNumbers
+                            //value={this.state.value}
                             
                         />
                         
