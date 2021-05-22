@@ -22,3 +22,5 @@ class Lote extends Component{
         )
     }
 }
+
+export default Lote;

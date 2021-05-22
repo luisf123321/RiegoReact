@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import Cultivo from './Cultivo';
 import Navbar from './Navbar';
 import '../Styles/css/card.css';
-import * as grIcon from 'react-icons/gr';;
+import * as grIcon from 'react-icons/gr';
+import 'bootstrap/dist/css/bootstrap.css';
 class Cultivos extends Component{
 
     componentDidMount(){
@@ -30,7 +31,7 @@ class Cultivos extends Component{
         console.log(this.state.datosCultivo)
         
         const cul = this.state.datosCultivo.map((datos,index)=>{                        
-            return <Cultivo key={index} cultivo_name={datos.cultivo} />;
+            return  <Cultivo key={index} cultivo_name={datos.cultivo} /> ;
         })
         /*
         const cul = this.state.datosLotes.map((datos,index)=>{                        
@@ -50,18 +51,17 @@ class Cultivos extends Component{
             <Fragment>
                 
                 <div className="container" >
-                    <div className="row offset-lg-2 mt-3 mb-5 pb-3 pt-3 pr-3 pl-3 border rounded border-primary bg-light">
-                        <h1 className="mt-2 mr-2 ml-3">Cultivos </h1>   
+                    <div className="row offset-lg-2 mt-3 mb-3 pt-3 pb-3 border rounded border-primary bg-light">
+                        <h1 >Cultivos </h1>   
                         <div class="dropdown-divider mt-2 mr-2 ml-2"></div>
                         <div  >                            
                             <h2 className="col-6 text-primary mb-3" > Total de Cultivos Registrados: {' '+this.state.datosCultivo.length} </h2>                     
-                            <button type="button" class="btn btn-success"> <GrAddCircle/>Agregar Cultivo</button>                            
+                            <button type="button" class="btn btn-success"> <grIcon.GrAddCircle/>Agregar Cultivo</button>                            
                         </div>
-                        <div class="dropdown-divider mt-3"></div> 
-                        <div className="row ">
+                        <div class="dropdown-divider mt-3" ></div> 
+                        <div className="row">
                             {cul}
                         </div>           
-                        
                         <div class="dropdown-divider"></div>
                         <div>
                             <alert>ddddd</alert>
