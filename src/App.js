@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import './Styles/css/app.css'
 import Lotes from './components/Lotes';
 import Calendario from './components/Calendario';
+import Estadisticas from './components/Estadisticas';
 class App extends Component{
 
 
@@ -21,6 +22,7 @@ class App extends Component{
                     <Route exact={true} path="/cultivos" component={Cultivos}  />
                     <Route exact={true} path="/lotes" component={Lotes}  />
                     <Route exact={true} path="/calendario" component={Calendario}  />
+                    <Route exact={true} path="/estadisticas" component={Estadisticas}  />
                 </Switch>
             </BrowserRouter>
 
