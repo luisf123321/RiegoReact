@@ -8,11 +8,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import * as boootsIcon from 'react-icons'
 import App from './App';
 import './Styles/css/navbar.css'
+
+import Navbar from './components/Navbar';
 const container = document.getElementById('app')
 
 ReactDOM.render(
   <React.StrictMode>
     <App>
+      
     </App>
   </React.StrictMode>,
   container

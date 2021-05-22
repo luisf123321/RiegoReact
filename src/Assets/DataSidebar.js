@@ -5,7 +5,7 @@ import * as biIcon from 'react-icons/bi'
 export const sidebardata =[
     {
         "title":"home",
-        "path":"/",
+        "path":"/home",
         "icon": < boootsIcon.BsHouseDoorFill />
     },
     {

@@ -54,8 +54,7 @@ class Login extends React.Component{
         const token = sessionStorage.getItem("token");
         return(
             <Fragment>
-                <div className="container">
-                    
+                <div className="container">                    
                     <div className="row mt-3 ">
                         <h1 className="offset-lg-1 mt-5 text-primary">Login</h1>
                         <div className="col-lg-5 offset-lg-1 border border-primary rounded bg-light mb-3">

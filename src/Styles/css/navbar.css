@@ -9,9 +9,10 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    position: fixed;
+    position:fixed;
     transition: 850ms;
     left: -100%;
+    top: 0;
 }
 
 .nav-menu.active {
