@@ -61,12 +61,12 @@ class Login extends React.Component{
                             {token && token !== '' && token!=undefined ? ("you ar loged "+token):(
                                 <form onSubmit={this.handleSubmit}>
                                     <div className="form-group mt-3 m-2 mr-2 mb-2 ">
-                                        <label for="exampleInputEmail1">Username</label>
+                                        <label >Username</label>
                                         <input type="text" className="form-control" onChange={this.handleChange} id="username" name="username" aria-describedby="emailHelp"/>
                                         <small id="emailHelp" className="form-text text-muted">We'll never share your username with anyone else.</small>
                                     </div>
                                     <div className="form-group  mt-3 m-2 mr-2 mb-2">
-                                        <label for="exampleInputPassword1">Password</label>
+                                        <label>Password</label>
                                         <input type="password" className="form-control" onChange={this.handleChange} id="password" name="password"/>
                                     </div>
                                     <button type="submit" className="btn btn-primary btn-block mt-3 m-2 mr-2 mb-2">Submit</button>

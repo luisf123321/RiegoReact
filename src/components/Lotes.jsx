@@ -37,12 +37,12 @@ class Lotes extends Component{
                     <div className="row  mt-3 mb-3  pt-3 pb-3 border rounded border-primary bg-light">
                         <div className="col-3 px-4 ml-3 mr-3 mt-3 mb-3 pt-3 pb-3 pr-3 pl-3 ">
                             <h1 className="px-2" >Lotes </h1> 
-                            <div class="dropdown-divider mt-3 mr-3 ml-3"></div>
+                            <div className="dropdown-divider mt-3 mr-3 ml-3"></div>
                             <div className="px-2" >                            
                                 <h2 className="text-primary mb-3" > Total de Lotes Registrados: {' '+this.state.datosLotes.length} </h2>                     
-                                <button type="button" class="btn btn-success"> <grIcon.GrAddCircle/>Agregar Cultivo</button>                            
+                                <button type="button" className="btn btn-success"> <grIcon.GrAddCircle/>Agregar Cultivo</button>                            
                             </div>
-                            <div class="dropdown-divider mt-3 mr-3 ml-3" ></div> 
+                            <div className="dropdown-divider mt-3 mr-3 ml-3" ></div> 
                         </div>
                         <div className="col ml-3 pr-3">                             
                             <div className="row  px-4 ml-3 mr-3 mt-3 mb-3 pt-3 pb-3 pr-3 pl-3 ">
