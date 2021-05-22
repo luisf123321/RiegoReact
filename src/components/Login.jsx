@@ -31,7 +31,7 @@ class Login extends React.Component{
 
     async handleSubmit(event) {
         event.preventDefault();
-        await fetch('http://localhost:5000/login', {
+        await fetch('https://riego-flask.herokuapp.com/login', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',

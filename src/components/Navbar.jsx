@@ -10,12 +10,20 @@ function Navbar(){
     const [sidebar, setSidebar ] = useState(false);
     const showSidebar = () =>setSidebar(!sidebar)
 
+    const token = sessionStorage.getItem("token");
+    
+    const na = token && token != '' && token!=undefined ? 
+                    <Link to="#" className="menu-bars" >
+                        <boootsIcon.BsList onClick={showSidebar} />
+                    </Link>
+                    :<></>
+
     return(
         <>
             <div className="navbar navbar-dark bg-dark">
-                <Link to="#" className="menu-bars" >
-                     <boootsIcon.BsList onClick={showSidebar} />
-                </Link>
+                { 
+                    na
+                }
             </div>
             <nav className={sidebar ? 'nav-menu active bg-dark': 'nav-menu bg-dark'} >
                 <ul className='nav-menu-items' onClick={showSidebar}> 

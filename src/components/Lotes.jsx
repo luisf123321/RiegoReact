@@ -13,7 +13,7 @@ class Lotes extends Component{
     }
 
     getLotes(){
-        fetch("http://localhost:5000/Lotes",{
+        fetch("https://riego-flask.herokuapp.com/Lotes",{
             method:"GET",
             headers:{
                 'Accept': 'application/json',
@@ -33,23 +33,22 @@ class Lotes extends Component{
 
         return(
             <Fragment>
-                <div className="container" >
-                    <div className="row offset-lg-2 mt-3 mb-5 pb-3 pt-3 pr-3 pl-3 border rounded border-primary bg-light">
-                        <h1 className="mt-2 mr-2 ml-3">Lotes </h1>   
-                        <div class="dropdown-divider mt-2 mr-2 ml-2"></div>
-                        <div  >                            
-                            <h2 className="col-6 text-primary mb-3" > Total de Lotes Registrados: {' '+this.state.datosLotes.length} </h2>                     
-                            <button type="button" class="btn btn-success"> <grIcon.GrAddCircle/>Agregar Lote</button>                            
+                 <div className="container" >
+                    <div className="row  mt-3 mb-3  pt-3 pb-3 border rounded border-primary bg-light">
+                        <div className="col-3 px-4 ml-3 mr-3 mt-3 mb-3 pt-3 pb-3 pr-3 pl-3 ">
+                            <h1 className="px-2" >Lotes </h1> 
+                            <div class="dropdown-divider mt-3 mr-3 ml-3"></div>
+                            <div className="px-2" >                            
+                                <h2 className="text-primary mb-3" > Total de Lotes Registrados: {' '+this.state.datosLotes.length} </h2>                     
+                                <button type="button" class="btn btn-success"> <grIcon.GrAddCircle/>Agregar Cultivo</button>                            
+                            </div>
+                            <div class="dropdown-divider mt-3 mr-3 ml-3" ></div> 
                         </div>
-                        <div class="dropdown-divider mt-3"></div> 
-                        <div className="row ">
-                            {Lot}
-                        </div>           
-                        
-                        <div class="dropdown-divider"></div>
-                        <div>
-                            <alert>ddddd</alert>
-                        </div>
+                        <div className="col ml-3 pr-3">                             
+                            <div className="row  px-4 ml-3 mr-3 mt-3 mb-3 pt-3 pb-3 pr-3 pl-3 ">
+                                {Lot}
+                            </div>
+                        </div>               
                     </div>
                 </div>  
             </Fragment>

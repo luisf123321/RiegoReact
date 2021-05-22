@@ -15,7 +15,7 @@ class Cultivos extends Component{
     }
 
     getCultivos(){
-        fetch("http://localhost:5000/cultivos",{
+        fetch("https://riego-flask.herokuapp.com/cultivos",{
             method:'GET',
             headers:{
                 'Accept': 'application/json',
@@ -51,21 +51,23 @@ class Cultivos extends Component{
             <Fragment>
                 
                 <div className="container" >
-                    <div className="row offset-lg-2 mt-3 mb-3 pt-3 pb-3 border rounded border-primary bg-light">
-                        <h1 >Cultivos </h1>   
-                        <div class="dropdown-divider mt-2 mr-2 ml-2"></div>
-                        <div  >                            
-                            <h2 className="col-6 text-primary mb-3" > Total de Cultivos Registrados: {' '+this.state.datosCultivo.length} </h2>                     
-                            <button type="button" class="btn btn-success"> <grIcon.GrAddCircle/>Agregar Cultivo</button>                            
+                    <div className="row  mt-3 mb-3  pt-3 pb-3 border rounded border-primary bg-light">
+                        <div className="col-3 px-4 ml-3 mr-3 mt-3 mb-3 pt-3 pb-3 pr-3 pl-3 ">
+                            <h1 className="mt-3 mb-3 px-2 ">Cultivos </h1> 
+                            <div class="dropdown-divider  "></div>
+                            <div  className="px-2 " >                            
+                                <h2 className="text-primary mb-3" > Total de Cultivos Registrados: {' '+this.state.datosCultivo.length} </h2>                     
+                                <button type="button" class="btn btn-success"> <grIcon.GrAddCircle/>Agregar Cultivo</button>                            
+                            </div>
+                            <div class="dropdown-divider " ></div> 
                         </div>
-                        <div class="dropdown-divider mt-3" ></div> 
-                        <div className="row">
-                            {cul}
-                        </div>           
-                        <div class="dropdown-divider"></div>
-                        <div>
-                            <alert>ddddd</alert>
+                        <div className="col ml-3 pr-3">                             
+                            <div className="row px-4 ml-3 mr-3 mt-3 mb-3 pt-3 pb-3 pr-3 pl-3 ">
+                                {cul}
+                            </div>
                         </div>
+                           
+                        
                     </div>
                 </div>  
             </Fragment>

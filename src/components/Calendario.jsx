@@ -28,9 +28,11 @@ class Calendario extends Component{
                 <div >
                     
                         <Calendar
+                            
                             onChange={this.onChange}
                             showWeekNumbers
                             value={this.state.value}
+                            
                         />
                         
                 </div>
