@@ -3,6 +3,10 @@ import Cultivo from './Cultivo';
 import '../Styles/css/card.css';
 import * as grIcon from 'react-icons/gr';
 import 'bootstrap/dist/css/bootstrap.css';
+import Modal from 'bootstrap/js/dist/modal';
+import ModalCultivo from './ModalCultivo';
+
+
 class Cultivos extends Component{
 
     componentDidMount(){
@@ -32,6 +36,7 @@ class Cultivos extends Component{
         const cul = this.state.datosCultivo.map((datos,index)=>{                        
             return  <Cultivo key={index} cultivo_name={datos.cultivo} /> ;
         })
+
         /*
         const cul = this.state.datosLotes.map((datos,index)=>{                        
             return <div className="card mt-3 mr-3 ml-3 mb-3" style={{"width": "18rem"}}>
@@ -56,7 +61,8 @@ class Cultivos extends Component{
                             <div className="dropdown-divider  "></div>
                             <div  className="px-2 " >                            
                                 <h2 className="text-primary mb-3" > Total de Cultivos Registrados: {' '+this.state.datosCultivo.length} </h2>                     
-                                <button type="button" className="btn btn-success"> <grIcon.GrAddCircle/>Agregar Cultivo</button>                            
+                                <button type="button" className="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Agregar Cultivo</button>
+                            
                             </div>
                             <div className="dropdown-divider " ></div> 
                         </div>
@@ -64,11 +70,13 @@ class Cultivos extends Component{
                             <div className="row px-4 ml-3 mr-3 mt-3 mb-3 pt-3 pb-3 pr-3 pl-3 ">
                                 {cul}
                             </div>
-                        </div>
-                           
-                        
+                        </div>           
                     </div>
-                </div>  
+                </div> 
+                
+                <ModalCultivo/>
+                
+
             </Fragment>
         )
     }
