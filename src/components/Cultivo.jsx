@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
+
 class Cultivo extends Component{
 
 
@@ -14,7 +15,8 @@ class Cultivo extends Component{
                         <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p className="card-text">sss</p>
                     </div>
-                </div>                
+                </div>
+                                
             </Fragment>
         )
     }
