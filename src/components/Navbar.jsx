@@ -32,10 +32,12 @@ function Navbar(){
                         sidebardata.map((data,index)=>{
                             return(
                                 <li key={index} className="nav-text" >
+                                     
                                     <Link to={data.path} >
                                         {data.icon}
                                         <span >{data.title}</span>
-                                    </Link>                                    
+                                    </Link>  
+                                                            
                                 </li>
                             )
                         })

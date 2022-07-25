@@ -39,8 +39,7 @@ class Login extends React.Component{
           },
           body: JSON.stringify(this.state.item),
         }).then(resp => {
-            if (resp.status === 200){ 
-                this.props.history.push('/fincas');
+            if (resp.status === 200){                 
                 return resp.json();
             }
             else{ alert('error login ')};
@@ -50,7 +49,7 @@ class Login extends React.Component{
         }).catch(error => {
             console.log(error)
         });
-        
+        this.props.history.push('/fincas');
     }
 
     render(){
