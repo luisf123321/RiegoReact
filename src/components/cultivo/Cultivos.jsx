@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Cultivo from './Cultivo';
-import '../Styles/css/card.css';
+import '../../Styles/css/card.css';
 import * as grIcon from 'react-icons/gr';
 import 'bootstrap/dist/css/bootstrap.css';
 import Modal from 'bootstrap/js/dist/modal';

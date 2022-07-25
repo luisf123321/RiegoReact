@@ -8,11 +8,7 @@ export const sidebardata =[
         "path":"/home",
         "icon": < boootsIcon.BsHouseDoorFill />
     },
-    {
-        "title":"Estadisticas",
-        "path":"/estadisticas",
-        "icon": < boootsIcon.BsGraphUp />
-    },
+    
     {
         "title":"Lotes",
         "path":"/lotes",
@@ -22,11 +18,7 @@ export const sidebardata =[
         "title":"Cultivos",
         "path":"/cultivos",
         "icon": < giIcon.GiFarmTractor />
-    },
-    {
-        "title":"Calendario",
-        "path":"/calendario",
-        "icon": < boootsIcon.BsCalendarFill />
-    },
+    }
+    
     
 ]

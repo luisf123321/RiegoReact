@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { BrowserRouter,  Route, Switch } from 'react-router-dom';
-import Login from './components/Login';
-import Cultivos from './components/Cultivos';
+import { BrowserRouter,  Route, Routes } from 'react-router-dom';
+import Login from './components/auth/Login';
+import Cultivos from './components/cultivo/Cultivos';
 import Navbar from './components/Navbar';
 import './Styles/css/app.css'
-import Lotes from './components/Lotes';
-import Calendario from './components/Calendario';
+import Lotes from './components/lote/Lotes';
+import Fincas from './components/finca/fincas'
 import Estadisticas from './components/Estadisticas';
+import Lote from './components/lote/Lote';
 class App extends Component{
 
 
@@ -15,13 +16,17 @@ class App extends Component{
             
             <BrowserRouter>
                 <Navbar />
-                <Switch>
-                    <Route exact={true} path="/" component={Login}  />
-                    <Route exact={true} path="/cultivos" component={Cultivos}  />
-                    <Route exact={true} path="/lotes" component={Lotes}  />
+                <Routes>
+                    <Route exact={true} path="/" element={<Login />} />
+                    <Route exact={true} path="/cultivos" element={<Cultivos />}  />
+                    <Route exact={true} path="/lotes" element={<Lote />}  />
+                    {/*
                     <Route exact={true} path="/calendario" component={Calendario}  />
                     <Route exact={true} path="/estadisticas" component={Estadisticas}  />
-                </Switch>
+                    */}
+                    
+                    <Route exact={true} path="/fincas" element={<Fincas/>}  />
+                </Routes>
             </BrowserRouter>
 
         );

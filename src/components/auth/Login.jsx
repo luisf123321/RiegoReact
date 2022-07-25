@@ -31,7 +31,7 @@ class Login extends React.Component{
 
     async handleSubmit(event) {
         event.preventDefault();
-        await fetch('https://riego-flask.herokuapp.com/login', {
+        await fetch('https://riegoback.herokuapp.com/auth/login', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -39,15 +39,18 @@ class Login extends React.Component{
           },
           body: JSON.stringify(this.state.item),
         }).then(resp => {
-            if (resp.status === 200) return resp.json();
-            else alert('error login ');
+            if (resp.status === 200){ 
+                this.props.history.push('/fincas');
+                return resp.json();
+            }
+            else{ alert('error login ')};
         }).then(data => {
             sessionStorage.setItem("token",data.access_token)
-            console.log(data.access_token)
+            console.log(data.access_token)            
         }).catch(error => {
             console.log(error)
         });
-        this.props.history.push('/cultivos');
+        
     }
 
     render(){
@@ -58,7 +61,7 @@ class Login extends React.Component{
                     <div className="row mt-3 ">
                         <h1 className="offset-lg-1 mt-5 text-primary">Login</h1>
                         <div className="col-lg-5 offset-lg-1 border border-primary rounded bg-light mb-3">
-                            {token && token !== '' && token!=undefined ? ("you ar loged "+token):(
+                            {token && token !== '' && token!==undefined ? ("you ar loged "+token):(
                                 <form onSubmit={this.handleSubmit}>
                                     <div className="form-group mt-3 m-2 mr-2 mb-2 ">
                                         <label >Username</label>
