@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import VistaPrediction from './VistaPrediction';
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
+import VentanaModal from '../../components/modals/VentanaModal';
 
 const Prediction = (props) => {
 
@@ -98,7 +100,8 @@ const Prediction = (props) => {
                 <div className="col-6   my-3 px-3 py-3">
                     <div className='mx-5 my-5 px-5 py-5'>
                         <h1 className="mb-3 text-primary">Clasificar Tipo De Suelo</h1>
-                        <p>Para determinar el tipo de suelo</p>
+                        <p>Para determinar el tipo de suelo. <Link to="modal">Ejemplo</Link><Outlet />
+                        </p>
 
                         <div className="form-group mt-3 m-2 mr-2 mb-2 ">
                             <input type="file" name="file" onChange={changeHandler} />
@@ -139,6 +142,9 @@ const Prediction = (props) => {
                 </div>
 
             </div>
+            <Routes>
+                <Route path='modal' element={ <VentanaModal />} />
+            </Routes>
         </div>
     );
 }

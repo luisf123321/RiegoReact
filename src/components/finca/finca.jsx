@@ -1,14 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import SimpleMap from '../mapa/map';
 import { useNavigate } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 const Finca = (props) => {
 
     const navigate = useNavigate();
 
-    const onClickDetalle = () =>{
+    const onClickLotes = () =>{
         console.log(props.finca.id)
         navigate("/lotes",{state:{finca:props.finca.id}})
+    }
+
+    const onClickDetalle = () =>{
+        console.log(props.finca.id)
+        navigate("/fincas/detalle",{state:{finca:props.finca.id}})
     }
 
     
@@ -22,8 +28,8 @@ const Finca = (props) => {
                     <h6 className="card-subtitle mb-2 text-muted"><strong>Direccion:</strong>  {props.finca.direccion}</h6>
                     <p className="card-text fs-6"> <strong>Latitud:</strong> {props.finca.latidud} </p>
                     <p className="card-text fs-6"> <strong>Longitud:</strong>  {props.finca.longitud}</p>
-                    <button  className="btn btn-primary mx-1 my-1">Ver Detalle</button>
-                    <button onClick={onClickDetalle}  className="btn btn-primary mx-1 my-1">Ver Lotes</button>
+                    <button onClick={onClickDetalle} className="btn btn-primary mx-1 my-1">Ver Detalle</button>
+                    <button onClick={onClickLotes}  className="btn btn-primary mx-1 my-1">Ver Lotes</button>
                     <div>
                         <SimpleMap lat={props.finca.latidud} long={props.finca.longitud}/>
                     </div>
