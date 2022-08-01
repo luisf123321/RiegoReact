@@ -10,11 +10,6 @@ export const sidebardata =[
     },
     
     {
-        "title":"Lotes",
-        "path":"/lotes",
-        "icon": < biIcon.BiWater />
-    },
-    {
         "title":"Cultivos",
         "path":"/cultivos",
         "icon": < giIcon.GiFarmTractor />
