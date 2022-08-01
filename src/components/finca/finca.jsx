@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import SimpleMap from '../map';
+import SimpleMap from '../mapa/map';
 import { useNavigate } from 'react-router-dom';
 
 const Finca = (props) => {

@@ -18,15 +18,17 @@ const Fincas = () => {
         })
             .then(response => response.json())
             .then(data => { console.log(data['id']); sessionStorage.setItem("user_id", data['id']) })
+
+        const user = sessionStorage.getItem("user_id");
+        return user;
     }
 
     const getCultivos = async () => {
 
-        await getUser();
+        let user = await getUser();
 
-        const user = sessionStorage.getItem("user_id");
         console.log(user)
-        fetch("https://riegoback.herokuapp.com/finca/user/" + user, {
+        await fetch("https://riegoback.herokuapp.com/finca/user/" + user, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

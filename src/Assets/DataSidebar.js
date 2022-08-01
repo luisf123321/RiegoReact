@@ -13,6 +13,12 @@ export const sidebardata =[
         "title":"Cultivos",
         "path":"/cultivos",
         "icon": < giIcon.GiFarmTractor />
+    },
+
+    {
+        "title":"Prediction",
+        "path":"/prediction",
+        "icon": < giIcon.GiFarmTractor />
     }
     
     

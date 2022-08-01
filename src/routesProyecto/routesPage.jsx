@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import { BrowserRouter,  Route, Routes } from 'react-router-dom';
 import LoginPage from '../pages/auth/LoginPage';
 import Cultivos from '../components/cultivo/Cultivos';
-
+import PredictionSoilPage from '../pages/Predictions/PredictionSoilPage';
 const RoutesPage = () => {
     return (
         <BrowserRouter>
@@ -15,6 +15,7 @@ const RoutesPage = () => {
                 <Route exact={true} path="/cultivos" element={<Cultivos />} />
                 <Route exact={true} path="/lotes" element={<Lotes />} />
                 <Route exact={true} path="/fincas" element={<Fincas />} />
+                <Route exact={true} path="/prediction" element={<PredictionSoilPage />} />
             </Routes>
         </BrowserRouter>
     );

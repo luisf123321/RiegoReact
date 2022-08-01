@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import SimpleMap from '../map';
+import SimpleMap from '../mapa/map';
 
 const Lote = (props) => {
     return (
