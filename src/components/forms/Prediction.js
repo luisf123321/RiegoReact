@@ -18,12 +18,10 @@ const Prediction = (props) => {
         reader.onload = (e) => {
 
             setimageBase(e.target.result);
-            let imageNew = e.target.result;
-            imageNew.width = 320;
-            imageNew.height = 480
+            
             const context = myCanvas.current.getContext('2d');
             const image = new Image();
-            image.src = imageNew;
+            image.src = e.target.result;
             image.onload = () => {
                 context.drawImage(image, 0, 0, 500, 500);
             };
