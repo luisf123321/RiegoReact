@@ -4,7 +4,7 @@ import Lotes from '../pages/Lotes/Lotes';
 import Navbar from '../components/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from '../pages/auth/LoginPage';
-import Cultivos from '../components/cultivo/Cultivos';
+import Cultivos from '../pages/Cultivos/Cultivos';
 import PredictionSoilPage from '../pages/Predictions/PredictionSoilPage';
 
 import FincaDetalle from '../pages/Finca/FincaDetalle';

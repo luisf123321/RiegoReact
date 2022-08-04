@@ -2,10 +2,13 @@ import React, { Component, Fragment, useState, useEffect } from 'react';
 import Finca from '../../components/finca/finca';
 import '../../Styles/css/card.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import Card from '../../components/Card/Card';
+import { useNavigate } from 'react-router-dom';
 
 const Fincas = () => {
 
     const [dataFincas, setdataFincas] = useState([]);
+    const navigate = useNavigate();
 
     const getUser = async () => {
         fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
@@ -39,15 +42,27 @@ const Fincas = () => {
             .then(response => response.json()).then(data => setdataFincas(data))
     }
 
+   
 
-    const cul = dataFincas.map((datos, index) => {
-        return <Finca key={index} finca={datos} />;
-    })
+    
 
     useEffect(() => {
         getCultivos();
-
     }, []);
+
+    const onClickLotes = (id) =>{
+        
+        navigate("/lotes",{state:{finca:id}})
+    }
+
+    const onClickDetalleFinca = (id) =>{
+        navigate("/fincas/detalle",{state:{finca:id}})
+    }
+
+
+    const cul = dataFincas.map((datos, index) => {
+        return <Card key={index} card={datos} onClickDetalle={onClickDetalleFinca(datos.id)} onClickToPage={onClickLotes(datos.id)} />;
+    })
 
 
 

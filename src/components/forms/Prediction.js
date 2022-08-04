@@ -2,6 +2,9 @@ import React, { useRef, useEffect, useState } from 'react';
 import VistaPrediction from './VistaPrediction';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import VentanaModal from '../../components/modals/VentanaModal';
+import Draggable, { DraggableCore } from "react-draggable";
+
+
 
 const Prediction = (props) => {
 
@@ -10,6 +13,28 @@ const Prediction = (props) => {
     const myCanvas = useRef();
     const [dataPrediction, setDataPrediction] = useState({ components: { arena: "1", arcilla: "2", limo: "3" } });
 
+    const [deltaPositionArena, setDeltaPositionArena] = useState({
+        x: 0,
+        y: 0
+    })
+
+    const [deltaPositionArenaButtom, setDeltaPositionArenaButtom] = useState({
+        x: 0,
+        y: 0
+    })
+
+    const [deltaPositionArcilla, setDeltaPositionArcilla] = useState({
+        x: 0,
+        y: 0
+    })
+    const [deltaPositionLimo, setDeltaPositionLimo] = useState({
+        x: 0,
+        y: 0
+    })
+    const [controlledPosition, setControlledPosition] = useState({
+        x: -400,
+        y: 200
+    });
     const [imageBase, setimageBase] = useState("");
 
     const changeHandler = (event) => {
@@ -24,7 +49,7 @@ const Prediction = (props) => {
 
         }
         setSelectedFile(event.target.files[0]);
-        
+
 
         console.log(imageBase)
 
@@ -54,10 +79,29 @@ const Prediction = (props) => {
                 for (var i = 0; i < ys.length; i++) {
                     var y = parseInt(ys[i]);
                     console.log(i, y);
-                    context.beginPath();
-                    context.moveTo(0, y);
-                    context.lineTo(320, y);
-                    context.stroke();
+                    if (i == 0) {
+                        context.beginPath();
+                        context.moveTo(0, deltaPositionArcilla.y);
+                        context.lineTo(320, deltaPositionArcilla.y);
+                        context.stroke();
+                    }
+                    else if (i == 1) {
+                        context.beginPath();
+                        context.moveTo(0, deltaPositionLimo.y);
+                        context.lineTo(320, deltaPositionLimo.y);
+                        context.stroke();
+                    } else if (i == 2) {
+                        context.beginPath();
+                        context.moveTo(0, deltaPositionArenaButtom.y);
+                        context.lineTo(320, deltaPositionArenaButtom.y);
+                        context.stroke();
+                    } else if (i == 3) {
+                        context.beginPath();
+                        context.moveTo(0, deltaPositionArena.y);
+                        context.lineTo(320, deltaPositionArena.y);
+                        context.stroke();
+                    }
+
                     context.font = "15px Arial";
                     context.fillText("tipo", 320, y);
                 }
@@ -84,6 +128,13 @@ const Prediction = (props) => {
         })
             .then(response => response.json())
             .then(data => {
+                setDeltaPositionArena({ x: 0, y: data.thresholds.arena_top - 2 });
+                setDeltaPositionLimo({ x: 0, y: data.thresholds.limo_top - 1 })
+                setDeltaPositionArcilla({ x: 0, y: data.thresholds.arcilla_top })
+                setDeltaPositionArenaButtom({ x: 0, y: data.thresholds.arena_bottom })
+                //setDeltaPositionArena({x:0,y:0});
+                //setDeltaPositionLimo({x:0,y:0})
+                //setDeltaPositionArcilla({x:0,y:0})
                 console.log(data);
                 setIsFilePicked(true);
                 setDataPrediction(data);
@@ -92,6 +143,11 @@ const Prediction = (props) => {
 
     };
 
+    const onControlledDrag = (e, position) => {
+        //const { x, y } = position;
+        console.log({ position })
+        //setDeltaPositionLimo({x:x,y:y});
+    }
 
 
     return (
@@ -115,20 +171,62 @@ const Prediction = (props) => {
                 <div className='col-6   my-3 px-3 py-3'>
                     <div className='mx-5 my-5 px-5 py-5'>
                         {
-                            isFilePicked?
-                            <div>
-                                <h1 className="mb-3 text-primary"> Prediction</h1>
-                            </div>
-                            :null
+                            isFilePicked ?
+                                <div>
+                                    <h1 className="mb-3 text-primary"> Prediction</h1>
+                                </div>
+                                : null
                         }
-                        <canvas 
-                            ref={myCanvas}
-                            width={420}
-                            height={480}
-                        />
+                        {
+                            isFilePicked ?
+                                <div className='row'>
+                                    <div className='col-lg-9'>
+                                        <canvas
+                                            ref={myCanvas}
+                                            width={320}
+                                            height={480}
+                                        />
+                                    </div>
+                                    <div className='col-lg-3 border '>
+                                        <Draggable axis="y"
+                                            bounds={{ top: -100, bottom: 100 }}
+                                            defaultPosition={deltaPositionLimo}>
+                                            <div style={{ border: "1px solid red" }}
+                                            >
+                                                <div className="handle">Limo</div>
+                                                <div> x: {deltaPositionLimo.x.toFixed(0)}, y: {deltaPositionLimo.y.toFixed(0)}</div>
+                                            </div>
+                                        </Draggable>
+                                        <Draggable axis="y"
+                                            bounds={{ top: -100, bottom: 100 }}
+                                            defaultPosition={deltaPositionArcilla}>
+                                            <div style={{ border: "1px solid red" }}>
+                                                <div className="handle">Arcilla</div>
+                                            </div>
+                                        </Draggable>
+                                        <Draggable axis="y"
+                                            bounds={{ top: -100, bottom: 100 }}
+                                            defaultPosition={deltaPositionArena}>
+                                            <div style={{ border: "1px solid red" }}>
+                                                <div className="handle">Arena</div>
+                                            </div>
+                                        </Draggable>
+                                        <Draggable axis="y"
+                                            bounds={{ top: -100, bottom: 100 }}
+                                            defaultPosition={deltaPositionArenaButtom}>
+                                            <div style={{ border: "1px solid red" }}>
+                                                <div className="handle">Arena button</div>
+                                            </div>
+                                        </Draggable>
+                                    </div>
+                                </div>
+                                : null
+                        }
+
                         {isFilePicked ?
+
                             <div>
-                                <p>El sistema ha determina los siguentes porcentajes de minerales presentes en 
+                                <p>El sistema ha determina los siguentes porcentajes de minerales presentes en
                                     la muestra de suelo.
                                 </p>
                                 <h3 className="mb-3 text-primary"> Arcilla:  {dataPrediction.components.arcilla} %</h3>
@@ -143,7 +241,7 @@ const Prediction = (props) => {
 
             </div>
             <Routes>
-                <Route path='modal' element={ <VentanaModal />} />
+                <Route path='modal' element={<VentanaModal />} />
             </Routes>
         </div>
     );

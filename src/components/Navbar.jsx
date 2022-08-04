@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { sidebardata } from "../Assets/DataSidebar";
 import * as boootsIcon from 'react-icons/bs';
 import '../Styles/css/navbar.css';
-
+import BreadcrumbExample from './breakcumb/BreadCumbComponent';
 
 function Navbar(){
 
@@ -16,7 +16,11 @@ function Navbar(){
                     <Link to="#" className="menu-bars" >
                         <boootsIcon.BsList onClick={showSidebar} />
                     </Link>
-                    :<></>
+                    :<>
+                        <Link to="#" className="menu-bars" >
+                            Welcome
+                        </Link>
+                    </>
 
     return(
         <>
@@ -43,7 +47,18 @@ function Navbar(){
                         })
                     }
                 </ul>
+                
             </nav>
+            {
+                showSidebar ? 
+                <BreadcrumbExample />
+                : null
+            }
+            
+            
+            
+            
+            
         </>
     )
 }
