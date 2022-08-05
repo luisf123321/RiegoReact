@@ -10,7 +10,7 @@ function Navbar(){
     const [sidebar, setSidebar ] = useState(false);
     const showSidebar = () =>setSidebar(!sidebar)
 
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     
     const na = token && token !== '' && token!=undefined ? 
                     <Link to="#" className="menu-bars" >
@@ -49,11 +49,11 @@ function Navbar(){
                 </ul>
                 
             </nav>
-            {
+            {/*
                 showSidebar ? 
                 <BreadcrumbExample />
                 : null
-            }
+            */}
             
             
             

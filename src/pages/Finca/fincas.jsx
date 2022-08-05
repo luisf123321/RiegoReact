@@ -50,18 +50,11 @@ const Fincas = () => {
         getCultivos();
     }, []);
 
-    const onClickLotes = (id) =>{
-        
-        navigate("/lotes",{state:{finca:id}})
-    }
-
-    const onClickDetalleFinca = (id) =>{
-        navigate("/fincas/detalle",{state:{finca:id}})
-    }
+   
 
 
     const cul = dataFincas.map((datos, index) => {
-        return <Card key={index} card={datos} onClickDetalle={onClickDetalleFinca(datos.id)} onClickToPage={onClickLotes(datos.id)} />;
+        return <Card key={index} card={datos} rutaToDetalle="fincas/detalle" rutaToPage="/lotes"/>;
     })
 
 

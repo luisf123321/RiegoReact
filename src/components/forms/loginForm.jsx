@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage, useFormik } from 'formik';
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom';
-
+import Logo from "../../Assets/Logo.svg"
 
 const loginSchema = Yup.object().shape(
     {
@@ -21,6 +21,7 @@ const LoginForm = () => {
 
     const navigate = useNavigate();
 
+
     return (
         <div>
             <Formik
@@ -38,7 +39,7 @@ const LoginForm = () => {
                     })
                         .then(resp => resp.json())
                         .then(data => {
-                            sessionStorage.setItem("token", data.access_token);
+                            localStorage.setItem("token", data.access_token);
                             console.log(data.access_token);
                             navigate('/fincas');
                         })
@@ -51,13 +52,13 @@ const LoginForm = () => {
                 {
                     ({ touched, errors, isSubmitting }) => (
                         <div className="container">
-                            <div className="row mt-3 ">
-                                <div className="col-lg-5 offset-lg-1 border border-primary rounded bg-light mb-3">
+                            <div className="row mt-3 mb-3 ">
+                                <div className="col-lg-5 px-52mx-3 mb-3">
                                     <h1 className="mt-5 text-primary">Login</h1>
                                     <Form>
                                         <div className="form-group mt-3 m-2 mr-2 mb-2 ">
                                             <label htmlFor="username" > Username </label>
-                                            <Field id="username" className="form-control"  type="text" name="username" placeholder="example123" />
+                                            <Field id="username" className="form-control" type="text" name="username" placeholder="example123" />
                                             {
                                                 errors.username && touched.username && (
                                                     <ErrorMessage name='username' component="div" ></ErrorMessage>
@@ -67,7 +68,7 @@ const LoginForm = () => {
                                         <div className="form-group  mt-3 m-2 mr-2 mb-2">
 
                                             <label htmlFor='password' > Password </label>
-                                            <Field id="password" className="form-control"  type="password" name="password" placeholder="password" />
+                                            <Field id="password" className="form-control" type="password" name="password" placeholder="password" />
                                             {
                                                 errors.password && touched.password && (
                                                     <ErrorMessage name='password' component="div" ></ErrorMessage>
@@ -79,6 +80,9 @@ const LoginForm = () => {
                                             isSubmitting ? (<p>login your credenciales</p>) : null
                                         }
                                     </Form>
+                                </div>
+                                <div className='col-lg-5 mx-5 px-5 my-3 '>
+                                    <img src={Logo} alt="SVG logo image" width={289} height={384} />
                                 </div>
                             </div>
                         </div>
