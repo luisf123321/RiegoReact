@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { sidebardata } from "../Assets/DataSidebar";
 import * as boootsIcon from 'react-icons/bs';
 import '../Styles/css/navbar.css';
-import BreadcrumbExample from './breakcumb/BreadCumbComponent';
+
 
 function Navbar(){
 

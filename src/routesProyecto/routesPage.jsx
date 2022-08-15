@@ -21,11 +21,12 @@ const RoutesPage = () => {
             <Navbar />
             <Routes>
                 <Route exact={true} path="/" element={<LoginPage />} />
-                <Route exact={true} path="/cultivos" element={<RoutePageCultivo />} />
+                <Route exact={true} path="/cultivos/*" element={<RoutePageCultivo />} />
                 <Route exact={true} path="/lotes/*" element={<RoutePageLote />} />                
                 <Route exact={true} path="/fincas/*" element={<RoutesPageFinca />} />
                 <Route exact={true} path="/sectores/*" element={<RoutePageSectores />} />
                 <Route exact={true} path="/prediction" element={<PredictionSoilPage />} />
+                <Route exact={true} path="/perfil" element={<PredictionSoilPage />} />
                 <Route path='*' element={<NotFoundPage />} />
 
             </Routes>

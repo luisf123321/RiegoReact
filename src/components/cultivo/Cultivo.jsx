@@ -1,25 +1,101 @@
-import React, { Component, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const Cultivo = () => {
 
 
-class Cultivo extends Component{
+    const [cultivos, setcultivos] = useState([]);
+    const [userId, setuserId] = useState(0);
+    const navigate = useNavigate();
+
+    const getUser = async () => {
+        let response = await fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
+        });
+
+        if (response.status === 200) {
+            let data = await response.json();
+            setuserId(data['id'])
+        } else {
+            localStorage.removeItem('token')
+            navigate("/")
+        }
 
 
-
-    render(){
-        return(
-            <Fragment> 
-                
-                <div className="card px-2" style={{"width": "16rem"}}>
-                    <div className="card-body">
-                        <h5 className="card-title">{this.props.cultivo_name}</h5>
-                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p className="card-text">sss</p>
-                    </div>
-                </div>
-                                
-            </Fragment>
-        )
     }
+
+    const getCultivos = async () => {
+
+        let response = await fetch("https://riegoback.herokuapp.com/cultivo/user/" + userId, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
+        });
+
+        if (response.status === 200) {
+            let dataResponse = await response.json();
+            console.log(dataResponse)
+            setcultivos(dataResponse)
+        }
+
+    }
+    useEffect(() => {
+        getUser();
+    }, []);
+
+
+    useEffect(() => {
+        if (userId !== 0) {
+            getCultivos();
+        }
+    }, [userId]);
+
+
+    return (
+        <div>
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha Inicio</th>
+                        <th scope="col">Fecha Fin</th>
+                        <th scope="col">actiones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        cultivos.map((cultivo, index) => (
+                            <tr>
+                                <th scope="row">{index}</th>
+                                <td>{cultivo.cultivoNombre}</td>
+                                <td>{cultivo.fechaInicio}</td>
+                                <td>{cultivo.fechaFinal}</td>
+                                <td>
+                                    <button className='btn btn-light'><i class="bi bi-pen"></i></button>
+                                    <button className='btn btn-danger'><i class="bi bi-trash-fill" /></button>
+                                </td>
+                            </tr>
+
+                        ))
+                    }
+
+
+                </tbody>
+
+            </table>
+        </div>
+    )
+
 }
 
 export default Cultivo;
