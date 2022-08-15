@@ -4,14 +4,12 @@ import Lotes from '../pages/Lotes/Lotes';
 import Navbar from '../components/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from '../pages/auth/LoginPage';
-import Cultivos from '../pages/Cultivos/Cultivos';
+import RoutePageCultivo from './routePageCultivo';
 import PredictionSoilPage from '../pages/Predictions/PredictionSoilPage';
 import NotFoundPage from '../pages/404/NotFoundPage';
-import FincaDetalle from '../pages/Finca/FincaDetalle';
-import LoteDetalle from '../pages/Lotes/LoteDetalle';
+import RoutePageSectores from './routePageSectores';
 import RoutesPageFinca from './routesPageFinca';
 import RoutePageLote from './routePageLote';
-import Sectores from '../pages/Sectores/Sectores';
 const RoutesPage = () => {
 
     const token = localStorage.getItem("token");
@@ -23,10 +21,10 @@ const RoutesPage = () => {
             <Navbar />
             <Routes>
                 <Route exact={true} path="/" element={<LoginPage />} />
-                <Route exact={true} path="/cultivos" element={<Cultivos />} />
+                <Route exact={true} path="/cultivos" element={<RoutePageCultivo />} />
                 <Route exact={true} path="/lotes/*" element={<RoutePageLote />} />                
                 <Route exact={true} path="/fincas/*" element={<RoutesPageFinca />} />
-                <Route exact={true} path="/sectores" element={<Sectores />} />
+                <Route exact={true} path="/sectores/*" element={<RoutePageSectores />} />
                 <Route exact={true} path="/prediction" element={<PredictionSoilPage />} />
                 <Route path='*' element={<NotFoundPage />} />
 

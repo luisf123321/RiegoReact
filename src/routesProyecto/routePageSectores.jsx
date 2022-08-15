@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+import Sectores from '../pages/Sectores/Sectores';
 const RoutePageSectores = () => {
     return (
-        <div>
-            
-        </div>
+        <Routes>
+        <Route path="/" element={<Sectores />} />
+        
+    </Routes>
     );
 }
 
