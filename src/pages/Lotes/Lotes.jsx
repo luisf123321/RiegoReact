@@ -1,30 +1,26 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 import * as grIcon from 'react-icons/gr';
-import Lote from '../../components/lote/Lote';
 import { useLocation } from "react-router-dom";
+import Card from '../../components/Card/Card';
 const Lotes = () => {
     const location = useLocation();
 
     const [datosLotes, setdatoslotes] = useState([]);
 
     const getLotes = async()=>{
-        let idfinca = location.state.finca;
+        let idfinca = location.state.idItem;
         await fetch("https://riegoback.herokuapp.com/lote/finca/"+idfinca, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }).then(resq => resq.json())
             .then(data => setdatoslotes( data ))
     }
-
-    
-
-
     const Lot = datosLotes.map((datos, index) => {
-        return <Lote key={index} lote={datos} />;
+        return <Card key={index} card={datos} rutaToDetalle="/lotes/detalle" rutaToPage="/sectores" textToPage="Sectores" textToDetalle="Detalle" />;
     });
 
     useEffect(() => {

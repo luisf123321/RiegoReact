@@ -4,23 +4,30 @@ import LoginForm from '../../components/forms/loginForm';
 const LoginPage = () => {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        
-        var token = localStorage.getItem('token')
-        
-
-        if(token){
-            /*
-            var tokenExpiration = jwtDecode(token).exp;
-            var dateNow = new Date();
-
-            if(tokenExpiration < dateNow.getTime()/1000){
-                console.log('expired');
-            }else{
-                props.history.push('/dashboard')
-                console.log('login screen')
+    const getUser = async () => {
+        let response  = await fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
-            */
+        })
+
+        if(response.status === 200){
+            return true
+        }else{
+            localStorage.removeItem("token")
+            return false
+        }
+
+    }
+
+    useEffect(async() => {
+        
+        let status = await getUser();        
+
+        if(status){
             navigate("/fincas");
         }
     }, []);

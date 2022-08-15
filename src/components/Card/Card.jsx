@@ -1,20 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import SimpleMap from '../mapa/map';
 import { useNavigate } from 'react-router-dom';
-import ButtonCard from './ButtonCard';
 
 const Card = (props) => {
 
     const navigate = useNavigate();
 
-    const onClickToPage = (id) => {
-
-        navigate(props.rutaToPage, { state: { idItem: id } })
+    const onClickToPage = () => {
+        navigate(props.rutaToPage, { state: { idItem: props.card.id } })
     }
 
-    const onClickDetalle = (id) => {
-        console.log("detalle", id)
-        navigate(props.rutaToDetalle, { state: { idItem: id } })
+    const onClickDetalle = () => {
+        navigate(props.rutaToDetalle, { state: { idItem: props.card.id } })
     }
 
 
@@ -27,11 +24,12 @@ const Card = (props) => {
                     <h5 className="card-title">{props.card.nombre}</h5>
                     <p className="card-text fs-6"> <strong>Latitud:</strong> {props.card.latidud} </p>
                     <p className="card-text fs-6"> <strong>Longitud:</strong>  {props.card.longitud}</p>
-                    <button className='btn btn-primary' type="button" onClick={onClickDetalle(props.card.id)}>
-                        Detalle
+                    <button className='btn btn-primary' type="button" onClick={onClickDetalle}>
+
+                        {props.textToDetalle}
                     </button>
-                    <button className='btn btn-primary' type="button" onClick={onClickToPage(props.card.id)}>
-                        Lotes
+                    <button className='btn btn-primary' type="button" onClick={onClickToPage}>
+                        {props.textToPage}
                     </button>
                     <div>
                         <SimpleMap lat={props.card.latidud} long={props.card.longitud} />

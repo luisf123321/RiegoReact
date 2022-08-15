@@ -1,60 +1,73 @@
-import React, { Component, Fragment, useState, useEffect } from 'react';
-import Finca from '../../components/finca/finca';
+import React, { Component, Fragment, useState, useEffect, useId } from 'react';
 import '../../Styles/css/card.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from '../../components/Card/Card';
 import { useNavigate } from 'react-router-dom';
 
+
 const Fincas = () => {
 
     const [dataFincas, setdataFincas] = useState([]);
+    const [viewData, setviewData] = useState(false);
+    const [userId, setuserId] = useState(0);
     const navigate = useNavigate();
 
     const getUser = async () => {
-        fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
+        let response = await fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
-        })
-            .then(response => response.json())
-            .then(data => { console.log(data['id']); sessionStorage.setItem("user_id", data['id']) })
+        });
 
-        const user = sessionStorage.getItem("user_id");
-        return user;
+        if(response.status === 200){
+            let data =await response.json();
+            setuserId(data['id'])
+        }else{
+            localStorage.removeItem('token')
+            navigate("/")
+        }
+            
+
     }
 
     const getCultivos = async () => {
 
-        let user = await getUser();
-
-        console.log(user)
-        await fetch("https://riegoback.herokuapp.com/finca/user/" + user, {
+        let response = await fetch("https://riegoback.herokuapp.com/finca/user/" + userId, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         })
-            .then(response => response.json()).then(data => setdataFincas(data))
+        
+        if(response.status === 200){
+            let dataResponse = await response.json();
+            setdataFincas(dataResponse);
+            setviewData(true)
+        }
     }
 
-   
-
-    
 
     useEffect(() => {
-        getCultivos();
+        getUser();
     }, []);
 
-   
+
+    useEffect(() => {
+        if (userId !== 0) {
+            getCultivos();
+        }
+    }, [userId]);
+
+
 
 
     const cul = dataFincas.map((datos, index) => {
-        return <Card key={index} card={datos} rutaToDetalle="fincas/detalle" rutaToPage="/lotes"/>;
+        return <Card key={index} card={datos} rutaToDetalle="/fincas/detalle" rutaToPage="/lotes" textToPage="Lotes" textToDetalle="Detalle" />;
     })
 
 
@@ -74,15 +87,13 @@ const Fincas = () => {
                     </div>
                     <div className="col-9 px-3 py-3">
                         <div className="row">
-                            {cul}
+                            {
+                                viewData? cul:null
+                            }
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
         </Fragment>
     )
 
