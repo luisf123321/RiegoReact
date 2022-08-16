@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Cultivo = () => {
 
@@ -83,6 +83,7 @@ const Cultivo = () => {
                                 <td>
                                     <button className='btn btn-light'><i class="bi bi-pen"></i></button>
                                     <button className='btn btn-danger'><i class="bi bi-trash-fill" /></button>
+                                    <button className='btn btn-secondary'> <Link to="" /> <i class="bi bi-eye-fill"></i></button>
                                 </td>
                             </tr>
 

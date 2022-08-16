@@ -7,8 +7,9 @@ const Cultivos = () => {
 
 
             <div className='row my-3'>
-                <div>
-                    <button className='btn btn-primary'>cultivos</button>
+                <div >
+                   <Link  className='btn btn-primary mx-2' to="lista">Cultivos</Link>     
+                   <Link className='btn btn-primary mx-2' to="crear"><i class="bi bi-plus-circle"></i> Crear Cultivo</Link>                
                 </div>
                 <div>
                     <Outlet />
