@@ -17,7 +17,7 @@ const Lotes = () => {
                 'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }).then(resq => resq.json())
-            .then(data => setdatoslotes( data ))
+            .then(data => setdatoslotes( data.lotes ))
     }
     const Lot = datosLotes.map((datos, index) => {
         return <Card key={index} card={datos} rutaToDetalle="/lotes/detalle" rutaToPage="/sectores" textToPage="Sectores" textToDetalle="Detalle" />;

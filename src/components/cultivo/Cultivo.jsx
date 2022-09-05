@@ -42,8 +42,8 @@ const Cultivo = () => {
 
         if (response.status === 200) {
             let dataResponse = await response.json();
-            console.log(dataResponse)
-            setcultivos(dataResponse)
+            console.log(dataResponse.cultivo)
+            setcultivos(dataResponse.cultivo)
         }
 
     }

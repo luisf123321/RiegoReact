@@ -46,7 +46,8 @@ const Fincas = () => {
         
         if(response.status === 200){
             let dataResponse = await response.json();
-            setdataFincas(dataResponse);
+            console.log(dataResponse.fincas);
+            setdataFincas(dataResponse.fincas);
             setviewData(true)
         }
     }

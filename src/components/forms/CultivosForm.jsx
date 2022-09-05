@@ -19,14 +19,21 @@ const cultivoSchema = Yup.object().shape(
 
     }
 );
-const options = [];
+const options = [
+    { value: "Food", label: "Food" },
+    { value: "Being Fabulous", label: "Being Fabulous" },
+    { value: "Ken Wheeler", label: "Ken Wheeler" },
+    { value: "ReasonML", label: "ReasonML" },
+    { value: "Unicorns", label: "Unicorns" },
+    { value: "Kittens", label: "Kittens" }
+];
 const CultivosForm = () => {
     const initialCredentials = {
         nombre: '',
         fechaInicio: '',
         fechaFinal: '',
         tipoCultivo: '',
-        user_id:0,
+        user_id: 0,
     }
 
     const [status, setstatus] = useState(false);
@@ -58,7 +65,7 @@ const CultivosForm = () => {
 
     }
 
-    const getTipoCultivo = async()=>{
+    const getTipoCultivo = async () => {
 
     }
 
@@ -77,9 +84,9 @@ const CultivosForm = () => {
                     const payload = {
                         ...values,
                         tipoCultivo: values.tipoCultivo.value,
-                        user_id:userId
+                        user_id: userId
                     };
-                    
+
                     setTimeout(() => {
                         alert(JSON.stringify(payload, null, 2));
                         setSubmitting(false);
@@ -90,7 +97,7 @@ const CultivosForm = () => {
 
             >
                 {
-                    ({ values, touched,dirty, errors, isSubmitting,handleReset, setFieldTouched, setFieldValue }) => (
+                    ({ values, touched, dirty, errors, isSubmitting, handleReset, setFieldTouched, setFieldValue }) => (
                         <div className="container">
                             <div className="row mt-3 mb-3 ">
                                 <div className="col-lg-9 px-52mx-3 mb-3">
