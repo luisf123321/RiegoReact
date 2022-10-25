@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage, useFormik } from 'formik';
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom';
-import Logo from "../../Assets/Logo.svg"
+import Logo from "../../Assets/Logo_Riego.svg"
 
 const loginSchema = Yup.object().shape(
     {
@@ -53,10 +53,13 @@ const LoginForm = () => {
                     ({ touched, errors, isSubmitting }) => (
                         <div className="container">
                             <div className="row mt-3 mb-3 ">
-                                <div className="col-lg-5 px-52mx-3 mb-3">
-                                    <h1 className="mt-5 text-primary">Login</h1>
+                                <div className='col-lg-5  '>
+                                    <img src={Logo} alt="SVG logo image" width={500} height={500} />
+                                </div>
+                                <div className="col-lg-5 px-5 mx-5 mb-3 mt-5">
+                                    <h1 className="mt-5 mx-5 text-primary">Login</h1>
                                     <Form>
-                                        <div className="form-group mt-3 m-2 mr-2 mb-2 ">
+                                        <div className="form-group mt-3 mx-5 mr-2 mb-2 ">
                                             <label htmlFor="username" > Username </label>
                                             <Field id="username" className="form-control" type="text" name="username" placeholder="example123" />
                                             {
@@ -65,7 +68,7 @@ const LoginForm = () => {
                                                 )
                                             }
                                         </div>
-                                        <div className="form-group  mt-3 m-2 mr-2 mb-2">
+                                        <div className="form-group  mt-3 mx-5 mr-2 mb-2">
 
                                             <label htmlFor='password' > Password </label>
                                             <Field id="password" className="form-control" type="password" name="password" placeholder="password" />
@@ -75,15 +78,13 @@ const LoginForm = () => {
                                                 )
                                             }
                                         </div>
-                                        <button type='submit' className="btn btn-primary btn-block mt-3 m-2 mr-2 mb-2">Login</button>
+                                        <button type='submit' className="btn btn-primary btn-block mt-3 mx-5 mr-2 mb-2">Login</button>
                                         {
                                             isSubmitting ? (<p>login your credenciales</p>) : null
                                         }
                                     </Form>
                                 </div>
-                                <div className='col-lg-5 mx-5 px-5 my-3 '>
-                                    <img src={Logo} alt="SVG logo image" width={289} height={384} />
-                                </div>
+                               
                             </div>
                         </div>
                     )

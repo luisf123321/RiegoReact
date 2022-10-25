@@ -33,7 +33,7 @@ const Fincas = () => {
 
     }
 
-    const getCultivos = async () => {
+    const getFincas = async () => {
 
         let response = await fetch("https://riegoback.herokuapp.com/finca/user/" + userId, {
             method: 'GET',
@@ -60,15 +60,13 @@ const Fincas = () => {
 
     useEffect(() => {
         if (userId !== 0) {
-            getCultivos();
+            getFincas();
         }
     }, [userId]);
 
 
-
-
     const cul = dataFincas.map((datos, index) => {
-        return <Card key={index} card={datos} rutaToDetalle="/fincas/detalle" rutaToPage="/lotes" textToPage="Lotes" textToDetalle="Detalle" />;
+        return <Card key={index} card={datos} rutaToDetalle="/fincas/detalle"/>;
     })
 
 
