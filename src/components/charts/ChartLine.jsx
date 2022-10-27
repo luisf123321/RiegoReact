@@ -56,10 +56,22 @@ Chart.register(
 );
 
 const ChartLine = (props) => {
+    var options =  {  
+        scales: {
+            xAxes: [{
+                ticks: {
+                    type: 'time',
+                    stepSize: 3
+                }
+            }]
+       }
+}
     return (
-        <Line data={props.data} >
+        <div className='col-lg-12 border mx-2 my-2'>
+        <Line data={props.data} options={options}>
 
         </Line>
+        </div>
     );
 }
 

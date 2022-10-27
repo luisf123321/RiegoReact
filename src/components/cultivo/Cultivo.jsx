@@ -60,40 +60,41 @@ const Cultivo = () => {
 
 
     return (
-        <div>
-            <table class="table table-striped">
+        <div className='container'>
+            <div className='row'>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Fecha Inicio</th>
+                            <th scope="col">Fecha Fin</th>
+                            <th scope="col">actiones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            cultivos.map((cultivo, index) => (
+                                <tr>
+                                    <th scope="row">{index + 1 }</th>
+                                    <td>{cultivo.cultivoNombre}</td>
+                                    <td>{cultivo.fechaInicio}</td>
+                                    <td>{cultivo.fechaFinal}</td>
+                                    <td>
+                                        <button className='btn btn-light'><i class="bi bi-pen"></i></button>
+                                        <button className='btn btn-danger'><i class="bi bi-trash-fill" /></button>
+                                        <button className='btn btn-secondary'> <Link to="" /> <i class="bi bi-eye-fill"></i></button>
+                                    </td>
+                                </tr>
 
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Fecha Inicio</th>
-                        <th scope="col">Fecha Fin</th>
-                        <th scope="col">actiones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        cultivos.map((cultivo, index) => (
-                            <tr>
-                                <th scope="row">{index}</th>
-                                <td>{cultivo.cultivoNombre}</td>
-                                <td>{cultivo.fechaInicio}</td>
-                                <td>{cultivo.fechaFinal}</td>
-                                <td>
-                                    <button className='btn btn-light'><i class="bi bi-pen"></i></button>
-                                    <button className='btn btn-danger'><i class="bi bi-trash-fill" /></button>
-                                    <button className='btn btn-secondary'> <Link to="" /> <i class="bi bi-eye-fill"></i></button>
-                                </td>
-                            </tr>
-
-                        ))
-                    }
+                            ))
+                        }
 
 
-                </tbody>
+                    </tbody>
 
-            </table>
+                </table>
+            </div>
         </div>
     )
 

@@ -13,8 +13,6 @@ const container = document.getElementById('app')
 
 ReactDOM.render(
   <React.StrictMode>
-    <App>      
-    </App>
     <RoutesPage />
   </React.StrictMode>,
   container

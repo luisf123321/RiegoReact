@@ -9,35 +9,27 @@ import Select from "react-select";
 const cultivoSchema = Yup.object().shape(
     {
         nombre: Yup.string().required("Nombre es requerido"),
-        fechaInicio: Yup.date().nullable().required('Fecha inicio es requirido')
+        fechaInicio: Yup.date().required('Fecha inicio es requirido')
         ,
-        fechaFinal: Yup.date().nullable().required('Fecha final es requirido')
+        fechaFinal: Yup.date().required('Fecha final es requirido')
         ,
-        tipo: Yup.object()
-
+        tipoCultivo: Yup.object()
             .required("El tipo de cultivo es requerido!")
 
     }
 );
-const options = [
-    { value: "Food", label: "Food" },
-    { value: "Being Fabulous", label: "Being Fabulous" },
-    { value: "Ken Wheeler", label: "Ken Wheeler" },
-    { value: "ReasonML", label: "ReasonML" },
-    { value: "Unicorns", label: "Unicorns" },
-    { value: "Kittens", label: "Kittens" }
-];
 const CultivosForm = () => {
     const initialCredentials = {
         nombre: '',
-        fechaInicio: '',
-        fechaFinal: '',
+        fechaInicio:new Date(),
+        fechaFinal: new Date(),
         tipoCultivo: '',
         user_id: 0,
     }
-
+    const [days, setdays] = useState(0);
     const [status, setstatus] = useState(false);
     const [userId, setuserId] = useState(0);
+    const [dateInitial, setdateInitial] = useState(new Date());
     const getUser = async () => {
         if (localStorage.getItem("token") !== undefined) {
             let response = await fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
@@ -65,35 +57,21 @@ const CultivosForm = () => {
 
     }
 
-    const getTipoCultivo = async () => {
-
-    }
 
     useEffect(() => {
         getUser();
     }, []);
 
-    const [message, setmessage] = useState(null);
     return (
         <div>
             <Formik
                 initialValues={initialCredentials}
                 validationSchema={cultivoSchema}
 
-                onSubmit={(values, { setSubmitting }) => {
-                    const payload = {
-                        ...values,
-                        tipoCultivo: values.tipoCultivo.value,
-                        user_id: userId
-                    };
-
-                    setTimeout(() => {
-                        alert(JSON.stringify(payload, null, 2));
-                        setSubmitting(false);
-                    }, 1000);
-
-                    console.log(values)
-                }}
+                onSubmit={async(values) => {
+                    console.log("envio");
+                    console.log(values);
+                }}              
 
             >
                 {
@@ -117,8 +95,10 @@ const CultivosForm = () => {
 
                                             <MySelect
                                                 value={values.tipoCultivo}
+                                                valueDateInitial={values.fechaInicio}
                                                 onChange={setFieldValue}
                                                 onBlur={setFieldTouched}
+                                                onChangeDays ={setdays}
                                                 error={errors.tipoCultivo}
                                                 touched={touched.tipoCultivo}
                                             />
@@ -126,7 +106,7 @@ const CultivosForm = () => {
                                         <div className='row'>
                                             <div className="col form-group  mt-3 m-2 mr-2 mb-2">
                                                 <label htmlFor='fechaInicio' > Fecha inicio </label>
-                                                <DatePicker selected={values.fechaInicio} className="form-control" onChange={date => setFieldValue('fechaInicio', date)} />
+                                                <DatePicker selected={values.fechaInicio} className="form-control" onChange={date => {setFieldValue('fechaInicio', date);setFieldValue('fechaFinal', new Date(new Date().setDate(date.getDate() + days)));}} />
                                                 {
                                                     errors.fechaInicio && touched.fechaInicio && (
                                                         <ErrorMessage style={{ color: "red", marginTop: ".5rem" }} name='fechaInicio' component="div" ></ErrorMessage>
@@ -175,9 +155,17 @@ const CultivosForm = () => {
 
 
 class MySelect extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { data: [] };
+        console.log(props);
+    }
     handleChange = value => {
         // this is going to call setFieldValue and manually update values.topcis
         console.log(value)
+        this.props.onChangeDays(value.total)
+        this.props.onChange("fechaFinal", new Date(new Date().setDate(this.props.valueDateInitial.getDate() + value.total)))
         this.props.onChange("tipoCultivo", value);
     };
 
@@ -186,12 +174,30 @@ class MySelect extends React.Component {
         this.props.onBlur("tipoCultivo", true);
     };
 
+    async componentDidMount() {
+        let response = await fetch("https://riegoback.herokuapp.com/cultivo/tipos", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
+        })
+
+        if (response.status === 200) {
+            let dataResponse = await response.json();
+            console.log(dataResponse);
+            this.setState({ data: dataResponse.tipos });
+        }
+    }
+
+
     render() {
         return (
             <div style={{ margin: "1rem 0" }}>
                 <Select
                     id="color"
-                    options={options}
+                    options={this.state.data}
                     onChange={this.handleChange}
                     onBlur={this.handleBlur}
                     value={this.props.value}

@@ -5,11 +5,13 @@ import Navbar from '../components/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from '../pages/auth/LoginPage';
 import RoutePageCultivo from './routePageCultivo';
-import PredictionSoilPage from '../pages/Predictions/PredictionSoilPage';
 import NotFoundPage from '../pages/404/NotFoundPage';
 import RoutePageSectores from './routePageSectores';
 import RoutesPageFinca from './routesPageFinca';
 import RoutePageLote from './routePageLote';
+import RegistroPage from '../pages/auth/RegistroPage';
+import RoutePageHome from './routePageHome';
+import RoutePagePredicion from './routePagePredicion';
 const RoutesPage = () => {
 
     const token = localStorage.getItem("token");
@@ -18,15 +20,17 @@ const RoutesPage = () => {
         
     return (
          <BrowserRouter>
-            <Navbar />
+           
             <Routes>
                 <Route exact={true} path="/" element={<LoginPage />} />
+                <Route exact={true} path="/singup" element={<RegistroPage />} />
+                <Route exact={true} path="/home/*" element={<RoutePageHome />} />
                 <Route exact={true} path="/cultivos/*" element={<RoutePageCultivo />} />
                 <Route exact={true} path="/lotes/*" element={<RoutePageLote />} />                
                 <Route exact={true} path="/fincas/*" element={<RoutesPageFinca />} />
                 <Route exact={true} path="/sectores/*" element={<RoutePageSectores />} />
-                <Route exact={true} path="/prediction" element={<PredictionSoilPage />} />
-                <Route exact={true} path="/perfil" element={<PredictionSoilPage />} />
+                <Route exact={true} path="/prediction/*" element={<RoutePagePredicion />} />
+                <Route exact={true} path="/perfil/*" element={<RoutePagePredicion />} />
                 <Route path='*' element={<NotFoundPage />} />
 
             </Routes>

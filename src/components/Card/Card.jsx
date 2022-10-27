@@ -7,10 +7,13 @@ const Card = (props) => {
     const navigate = useNavigate();
 
     const onClickDetalle = () => {
+        if(props.isFinca){
+            sessionStorage.setItem("idFinca",props.card.id)
+        }else{
+            sessionStorage.setItem("idLote",props.card.id)
+        }
         navigate(props.rutaToDetalle, { state: { idItem: props.card.id } })
     }
-
-
 
     return (
         <Fragment>

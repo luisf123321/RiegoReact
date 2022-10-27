@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage, useFormik } from 'formik';
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import Alertinfo from '../alerts/alertinfo';
+import { useLocation } from "react-router-dom";
 const fincaSchema = Yup.object().shape(
     {
         nombre: Yup.string().required("username is requerido"),
@@ -12,19 +13,23 @@ const fincaSchema = Yup.object().shape(
     }
 );
 
-const FincaForm = () => {
+const FincaFormActulizar = () => {
 
     const [userId, setIserId] = useState();
     const [viewAler, setviewAler] = useState(false);
     const [message, setmessage] = useState('');
     const [style, setstyle] = useState('');
+    const location = useLocation();
+    const data = location.state?.data;
+   
     const initialCredentials = {
-        nombre: '',
-        direccion: '',
-        latitud: 0,
-        longitud: 0,
-        altitud: 0,
-        user_is: 0
+        nombre: data.nombre,
+        direccion: data.direccion,
+        latitud: data.latidud,
+        longitud: data.longitud,
+        altitud: data.altitud,
+        user_is: data.usuario,
+        id:data.id
     }
 
     const getUser = async () => {
@@ -57,12 +62,16 @@ const FincaForm = () => {
         console.log(values);
         const payload = {
             ...values,
-            user_is: userId,
         };
         console.log(payload)
+        console.log(data)
+        data.nombre = payload.nombre;
+        data.direccion = payload.direccion;
+        console.log(data.direccion);
+        location.state.setDataUpdate(data);
 
-        await fetch('https://riegoback.herokuapp.com/finca', {
-            method: 'POST',
+        await fetch('https://riegoback.herokuapp.com/finca/'+data.id, {
+            method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -175,4 +184,4 @@ const FincaForm = () => {
     );
 }
 
-export default FincaForm;
+export default FincaFormActulizar;

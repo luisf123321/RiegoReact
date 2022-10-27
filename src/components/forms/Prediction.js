@@ -3,9 +3,10 @@ import VistaPrediction from './VistaPrediction';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import VentanaModal from '../../components/modals/VentanaModal';
 import Draggable, { DraggableCore } from "react-draggable";
-
-
-
+import Arena from "../../Assets/Arena.svg"
+import Arcilla from "../../Assets/Arcilla.svg"
+import Limo from "../../Assets/Limo.svg"
+import Fondo from "../../Assets/Fondo.svg"
 const Prediction = (props) => {
 
     const [selectedFile, setSelectedFile] = useState();
@@ -82,28 +83,32 @@ const Prediction = (props) => {
                     if (i == 0) {
                         context.beginPath();
                         context.moveTo(0, deltaPositionArcilla.y);
-                        context.lineTo(320, deltaPositionArcilla.y);
+                        context.lineTo(360, deltaPositionArcilla.y);
+                        context.lineWidth = 2;
+                        context.strokeStyle = "#FF00FE";
                         context.stroke();
+                        console.log("arena si")
                     }
                     else if (i == 1) {
                         context.beginPath();
                         context.moveTo(0, deltaPositionLimo.y);
-                        context.lineTo(320, deltaPositionLimo.y);
+                        context.lineTo(360, deltaPositionLimo.y);
+                        context.strokeStyle = "#ff0000";
                         context.stroke();
                     } else if (i == 2) {
                         context.beginPath();
                         context.moveTo(0, deltaPositionArenaButtom.y);
-                        context.lineTo(320, deltaPositionArenaButtom.y);
+                        context.lineTo(360, deltaPositionArenaButtom.y);
+                        context.strokeStyle = "#0000FF";
                         context.stroke();
                     } else if (i == 3) {
                         context.beginPath();
                         context.moveTo(0, deltaPositionArena.y);
-                        context.lineTo(320, deltaPositionArena.y);
+                        context.lineTo(360, deltaPositionArena.y);
+                        context.strokeStyle = "#6BFF47";
                         context.stroke();
                     }
 
-                    context.font = "15px Arial";
-                    context.fillText("tipo", 320, y);
                 }
 
             }
@@ -132,9 +137,7 @@ const Prediction = (props) => {
                 setDeltaPositionLimo({ x: 0, y: data.thresholds.limo_top - 1 })
                 setDeltaPositionArcilla({ x: 0, y: data.thresholds.arcilla_top })
                 setDeltaPositionArenaButtom({ x: 0, y: data.thresholds.arena_bottom })
-                //setDeltaPositionArena({x:0,y:0});
-                //setDeltaPositionLimo({x:0,y:0})
-                //setDeltaPositionArcilla({x:0,y:0})
+
                 console.log(data);
                 setIsFilePicked(true);
                 setDataPrediction(data);
@@ -151,32 +154,38 @@ const Prediction = (props) => {
 
 
     return (
-        <div className="container-fluid" >
+        <div className="container-fluid " >
             <div className='row'>
-                <div className="col-6   my-3 px-3 py-3">
-                    <div className='mx-5 my-5 px-5 py-5'>
-                        <h1 className="mb-3 text-primary">Clasificar Tipo De Suelo</h1>
+                <div className="col-6">
+                    <div className='py-2'>
+                        <h1 className="mb-3" style={{ "text_color": "#4D626C" }}>Clasificar Tipo De Suelo</h1>
                         <p>Para determinar el tipo de suelo. <Link to="modal">Ejemplo</Link><Outlet />
                         </p>
 
-                        <div className="form-group mt-3 m-2 mr-2 mb-2 ">
+                        <div className="form-group">
                             <input type="file" name="file" onChange={changeHandler} />
-                            <button className='btn btn-primary' onClick={handleSubmissionPredict}>Prediction</button>
+                            <button className='btn text-white' style={{ "background": "#2c4464" }} onClick={handleSubmissionPredict}>Prediction</button>
                         </div>
-                        <div className="form-group mt-3 m-2 mr-2 mb-2 ">
-                            <button className='btn btn-primary' >Guardar Registro</button>
+                        {isFilePicked ?
+
+                            <div>
+                                <p>El sistema ha determina los siguentes porcentajes de minerales presentes en
+                                    la muestra de suelo.
+                                </p>
+                                <h3 className="mb-3 " style={{ "text_color": "#4D626C" }}> Arcilla:  {dataPrediction.components.arcilla} %</h3>
+                                <h3 className="mb-3 " style={{ "text_color": "#4D626C" }}> Arena: {dataPrediction.components.arena} %</h3>
+                                <h3 className="mb-3 " style={{ "text_color": "#4D626C" }}> Limo : {dataPrediction.components.limo} %</h3>
+                            </div>
+                            :
+                            null
+                        }
+                        <div className="form-group">
+                            <button className='btn text-white' style={{ "background": "#2c4464" }} >Guardar Registro</button>
                         </div>
                     </div>
                 </div>
-                <div className='col-6   my-3 px-3 py-3'>
-                    <div className='mx-5 my-5 px-5 py-5'>
-                        {
-                            isFilePicked ?
-                                <div>
-                                    <h1 className="mb-3 text-primary"> Prediction</h1>
-                                </div>
-                                : null
-                        }
+                <div className='col-6 '>
+                    <div className='py-2'>
                         {
                             isFilePicked ?
                                 <div className='row'>
@@ -187,35 +196,34 @@ const Prediction = (props) => {
                                             height={480}
                                         />
                                     </div>
-                                    <div className='col-lg-3 border '>
+                                    <div className='col-lg-3'>
                                         <Draggable axis="y"
                                             bounds={{ top: -100, bottom: 100 }}
                                             defaultPosition={deltaPositionLimo}>
-                                            <div style={{ border: "1px solid red" }}
-                                            >
-                                                <div className="handle">Limo</div>
-                                                <div> x: {deltaPositionLimo.x.toFixed(0)}, y: {deltaPositionLimo.y.toFixed(0)}</div>
+                                            <div >
+                                                <img src={Limo} alt="SVG logo image" width={60} height={60} />
+
                                             </div>
                                         </Draggable>
                                         <Draggable axis="y"
                                             bounds={{ top: -100, bottom: 100 }}
                                             defaultPosition={deltaPositionArcilla}>
-                                            <div style={{ border: "1px solid red" }}>
-                                                <div className="handle">Arcilla</div>
+                                            <div >
+                                            <img src={Arcilla} alt="SVG logo image" width={60} height={60} />
                                             </div>
                                         </Draggable>
                                         <Draggable axis="y"
                                             bounds={{ top: -100, bottom: 100 }}
                                             defaultPosition={deltaPositionArena}>
-                                            <div style={{ border: "1px solid red" }}>
-                                                <div className="handle">Arena</div>
+                                            <div >
+                                            <img src={Arena} alt="SVG logo image" width={60} height={60} />
                                             </div>
                                         </Draggable>
                                         <Draggable axis="y"
                                             bounds={{ top: -100, bottom: 100 }}
                                             defaultPosition={deltaPositionArenaButtom}>
-                                            <div style={{ border: "1px solid red" }}>
-                                                <div className="handle">Arena button</div>
+                                            <div>
+                                                <div className="handle"><img src={Fondo} alt="SVG logo image" width={60} height={60} /></div>
                                             </div>
                                         </Draggable>
                                     </div>
@@ -223,19 +231,7 @@ const Prediction = (props) => {
                                 : null
                         }
 
-                        {isFilePicked ?
 
-                            <div>
-                                <p>El sistema ha determina los siguentes porcentajes de minerales presentes en
-                                    la muestra de suelo.
-                                </p>
-                                <h3 className="mb-3 text-primary"> Arcilla:  {dataPrediction.components.arcilla} %</h3>
-                                <h3 className="mb-3 text-primary"> Arena: {dataPrediction.components.arena} %</h3>
-                                <h3 className="mb-3 text-primary"> Limo : {dataPrediction.components.limo} %</h3>
-                            </div>
-                            :
-                            null
-                        }
                     </div>
                 </div>
 

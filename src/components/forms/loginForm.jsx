@@ -41,7 +41,7 @@ const LoginForm = () => {
                         .then(data => {
                             localStorage.setItem("token", data.access_token);
                             console.log(data.access_token);
-                            navigate('/fincas');
+                            navigate('/home');
                         })
                         .catch(error => {
                             console.log(error)
@@ -51,42 +51,35 @@ const LoginForm = () => {
             >
                 {
                     ({ touched, errors, isSubmitting }) => (
-                        <div className="container">
-                            <div className="row mt-3 mb-3 ">
-                                <div className='col-lg-5  '>
-                                    <img src={Logo} alt="SVG logo image" width={500} height={500} />
-                                </div>
-                                <div className="col-lg-5 px-5 mx-5 mb-3 mt-5">
-                                    <h1 className="mt-5 mx-5 text-primary">Login</h1>
-                                    <Form>
-                                        <div className="form-group mt-3 mx-5 mr-2 mb-2 ">
-                                            <label htmlFor="username" > Username </label>
-                                            <Field id="username" className="form-control" type="text" name="username" placeholder="example123" />
-                                            {
-                                                errors.username && touched.username && (
-                                                    <ErrorMessage name='username' component="div" ></ErrorMessage>
-                                                )
-                                            }
-                                        </div>
-                                        <div className="form-group  mt-3 mx-5 mr-2 mb-2">
 
-                                            <label htmlFor='password' > Password </label>
-                                            <Field id="password" className="form-control" type="password" name="password" placeholder="password" />
-                                            {
-                                                errors.password && touched.password && (
-                                                    <ErrorMessage name='password' component="div" ></ErrorMessage>
-                                                )
-                                            }
-                                        </div>
-                                        <button type='submit' className="btn btn-primary btn-block mt-3 mx-5 mr-2 mb-2">Login</button>
-                                        {
-                                            isSubmitting ? (<p>login your credenciales</p>) : null
-                                        }
-                                    </Form>
+                        <>
+                            <h1 className="mt-5 " style={{ "text_color": "#4D626C" }}>Inicio de Sesion</h1>
+                            <Form>
+                                <div className="form-group mt-3">
+                                    <label htmlFor="username" > Nombre de Usuario </label>
+                                    <Field id="username" className="form-control" type="text" name="username" placeholder="example123" />
+                                    {
+                                        errors.username && touched.username && (
+                                            <ErrorMessage name='username' component="div" ></ErrorMessage>
+                                        )
+                                    }
                                 </div>
-                               
-                            </div>
-                        </div>
+                                <div className="form-group mt-2">
+
+                                    <label htmlFor='password' > Contraseña </label>
+                                    <Field id="password" className="form-control" type="password" name="password" placeholder="password" />
+                                    {
+                                        errors.password && touched.password && (
+                                            <ErrorMessage name='password' component="div" ></ErrorMessage>
+                                        )
+                                    }
+                                </div>
+                                <button type='submit' className="btn btn-block mt-2 text-white "  style={{ "background": "#2c4464" }}>Iniciar Sesion</button>
+                                {
+                                    isSubmitting ? (<p>login your credenciales</p>) : null
+                                }
+                            </Form>
+                        </>
                     )
                 }
 

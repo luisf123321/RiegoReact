@@ -2,23 +2,24 @@ import React, { Component, Fragment, useState, useEffect, useId } from 'react';
 import '../../Styles/css/card.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from '../../components/Card/Card';
-import { useNavigate } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
-import ChartLine from '../../components/charts/ChartLine';
+import { Link, Outlet } from "react-router-dom";
+import LogoLat from "../../Assets/Logo_location_lat.svg"
+import LogoLong from "../../Assets/Logo_location_long.svg"
 const FincaDetalle = () => {
     const [dataFinca, setdataFinca] = useState([]);
-    const navigate = useNavigate();
-    const [datosLotes, setdatoslotes] = useState([]);
-    const [datosClima, setdatosClima] = useState([]);
-    const [viewData, setviewData] = useState(false);
-    const [viewDataChart, setviewDataChart] = useState(false);
-    const [dataFores, setdataFores] = useState([]);
+    const [datosClima, setdatosClima] = useState({
+        temp:{},
+        wind:{},
+        detail_status:'',
+        humedad:''
+    });
     const location = useLocation();
 
     const getFincaDetail = async () => {
         let idfinca = location.state.idItem;
         console.log(idfinca)
-        let response = await fetch("https://riegoback.herokuapp.com/finca/" + idfinca, {
+        let response = await fetch("https://riegoback.herokuapp.com/finca/" + sessionStorage.getItem("idFinca"), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -29,33 +30,16 @@ const FincaDetalle = () => {
 
         if (response.status === 200) {
             let dataResponse = await response.json();
-            console.log(dataResponse.finca);
             setdataFinca(dataResponse.finca);
             getClima(dataResponse.finca.latidud, dataResponse.finca.longitud);
-            getFores(dataResponse.finca.latidud, dataResponse.finca.longitud);
+            //getFores(dataResponse.finca.latidud, dataResponse.finca.longitud);
         }
     }
 
-    const getLotes = async () => {
-        let idfinca = location.state.idItem;
-        let response = await fetch("https://riegoback.herokuapp.com/lote/finca/" + idfinca, {
-            method: "GET",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")
-            }
-        });
-        if (response.status === 200) {
-            let dataResponse = await response.json();
-            console.log(dataResponse.lotes);
-            setdatoslotes(dataResponse.lotes);
-            setviewData(true);
-        }
-    }
+
 
     const getClima = async (lat, long) => {
-        let response = await fetch("http://127.0.0.1:5000/clima/coordenadas/" + lat + "/" + long, {
+        let response = await fetch("https://riegoback.herokuapp.com/clima/coordenadas/" + lat + "/" + long, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -65,107 +49,109 @@ const FincaDetalle = () => {
         });
         if (response.status === 200) {
             let dataResponse = await response.json();
-            console.log(dataResponse);
-            setdatosClima(dataResponse)
+            setdatosClima(dataResponse);
+            console.log(dataResponse)
         }
     }
 
-
-    const getFores = async (lat, long) => {
-        let response = await fetch("http://127.0.0.1:5000/clima/forecast/coordenadas/" + lat + "/" + long, {
-            method: "GET",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")
-            }
-        });
-        if (response.status === 200) {
-            let dataResponse = await response.json();
-            console.log(dataResponse);
-            setdataFores(dataResponse);
-        }
-    }
-
-
-    const Lot = datosLotes.map((datos, index) => {
-        return <Card key={index} card={datos} rutaToDetalle="/lotes/detalle" />;
-    });
-
-    const charlineHumedad = () => {
-        console.log(dataFores.humedad);
-        let humedad = dataFores.humedad;
-        let labels = dataFores.fecha; 
-        const data = {
-            labels,
-            datasets: [
-                {
-                    label: 'Humedad',
-                    data: humedad,
-                    borderColor: 'rgb(255, 99, 132)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                }
-            ],
-        };
-        return < ChartLine data={data} />
-    };
-
-    const charlineTemp = () => {
-        console.log(dataFores.temp);
-        let temp = dataFores.temp;
-        let labels = dataFores.fecha; 
-        const data = {
-            labels,
-            datasets: [
-                {
-                    label: 'Temp',
-                    data: temp,
-                    borderColor: 'rgb(255, 99, 132)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                }
-            ],
-        };
-        return < ChartLine data={data} />
-    };
     useEffect(() => {
         getFincaDetail();
-        getLotes();
-
     }, []);
 
 
 
     return (
-        <div className="container-fluid" >
-            <div className="row ">
-
-                <div className="col-3 px-5 py-3">
-                    <div>
-                        <p className='fw-bold'>Informacion General</p>
-                        <p> <span className='fw-bold'> Nombre: </span> {dataFinca.nombre}</p>
-                        <p><span className='fw-bold'> Direccion: </span> {dataFinca.direccion}</p>
-                        <p><span className='fw-bold'> Longitud: </span> {dataFinca.longitud}</p>
-                        <p><span className='fw-bold'> Latitud: </span>{dataFinca.latidud}</p>
-                        <p><span className='fw-bold'> Altitud: </span>{dataFinca.altitud}</p>
+        <div className="container-fluid" style={{ "padding-left": "18%"}} >
+            <div className="row-fluid ">
+                <div className='row pt-2' style={{"background":"#bfc8ce"}} >
+                    <div className='col '>
+                        <div className='row'>
+                            <div className='col-1 px-3  mx-2 mt-2'>
+                                <img src={LogoLat} alt="SVG logo image" width={30} height={30} />
+                            </div>
+                            <div className='col'>
+                                <label htmlFor="username" className='fs-2 fw-bold' > Latitud:</label>
+                                <p>{dataFinca.latidud}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p className='fw-bold'>Informacion de climatologica</p>
-                        <p><span className='fw-bold'> Estado: </span>{datosClima.detail_status}</p>
-                        <p><span className='fw-bold'><i class="bi bi-thermometer"></i>Humedad: </span> {datosClima.humedad}</p>
-                        <p><span className='fw-bold'> <i class="bi bi-thermometer-sun"></i>Temperatura: </span> { }</p>
-                        <p><span className='fw-bold'> Viento: </span>{ }</p>
+                    <div className='col ' >
+
+                        <div className='row'>
+                            <div className='col-1 px-3 mx-2 mt-2'>
+                                <img src={LogoLong} alt="SVG logo image" width={30} height={30} />
+                            </div>
+                            <div className='col'>
+                                <label htmlFor="username" className='fs-2 fw-bold' > Longitud:</label>
+                                <p>{dataFinca.longitud}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='col ' >
+                        <div className='row'>
+                            <div className='col-1 px-3 mx-2 '>
+                                <i class="bi bi-house-door-fill" style={{ "font-size": " 30px" }} ></i>
+                            </div>
+                            <div className='col'>
+                                <label htmlFor="username" className='fs-2 fw-bold' > Nombre:</label>
+                                <p>{dataFinca.nombre}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='col ' >
+                        <div className='row'>
+                            <div className='col-1 px-3 mx-2 mt-2'>
+                                <img src={LogoLat} alt="SVG logo image" width={30} height={30} />
+                            </div>
+                            <div className='col'>
+                                <label htmlFor="username" className='fs-2 fw-bold' > Dirección:</label>
+                                <p>{dataFinca.direccion}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="col-9 px-3 py-3">
-                    
-                    <>
-                        {charlineHumedad()}
-                    </>
-                    <>
-                        {charlineTemp()}
-                    </>
-                    <div className="row ">
-                        {viewData ? Lot : null}
+                <div className='row bg-light pt-2' >
+                    <div className='col '>
+                        <div className='mx-2 px-2'>
+                            <p className='fs-6 '><i class="bi bi-cloud-sun"></i> Estado: {datosClima.detail_status}</p>
+                        </div>
+                    </div>
+                    <div className='col ' >
+                        <div className='mx-2 px-2'>
+                            <p className='fs-6 '><i class="bi bi-thermometer-sun"></i> Temperatura: {datosClima.temp.temp}</p>
+                        </div>
+                    </div>
+
+                    <div className='col ' >
+                        <div className='mx-2 px-2' >
+                            <p className='fs-6 '><i class="bi bi-wind"></i> Viento: {datosClima.wind.speed}</p>
+                        </div>
+                    </div>
+                    <div className='col ' >
+                        <div className='mx-2 px-2' >
+                            <p className='fs-6 '>Humedad: {datosClima.humedad}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-12  py-3">
+                    <div className='row mt-2 mx-5 px-5'>
+                        <div className='col-3 d-grid'>
+                            <Link className='btn text-white' style={{"background":"#2c4464"}}  to="fores" state={{ lat: dataFinca.latidud, long: dataFinca.longitud }}>Pronósticos</Link>
+                        </div>
+                        <div className='col-3 d-grid'>
+                            <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="lotes" state={{ data: dataFinca.id }}>Lotes</Link>
+                        </div>
+                        <div className='col-3 d-grid'>
+                            <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="create" state={{ data: dataFinca.id }}>Nuevo Lote</Link>
+                        </div>
+                        <div className='col-3 d-grid'>
+                            <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="update" state={{ data: dataFinca }}>Actualizar Finca</Link>
+                        </div>
+                    </div>
+                    <div className='mt-2 mx-5 px-5'>
+                        <Outlet />
                     </div>
 
                 </div>

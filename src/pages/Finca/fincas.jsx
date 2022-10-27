@@ -3,8 +3,7 @@ import '../../Styles/css/card.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from '../../components/Card/Card';
 import { useNavigate } from 'react-router-dom';
-
-
+import { Link, Outlet } from "react-router-dom";
 const Fincas = () => {
 
     const [dataFincas, setdataFincas] = useState([]);
@@ -12,83 +11,26 @@ const Fincas = () => {
     const [userId, setuserId] = useState(0);
     const navigate = useNavigate();
 
-    const getUser = async () => {
-        let response = await fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")
-            }
-        });
-
-        if(response.status === 200){
-            let data =await response.json();
-            setuserId(data['id'])
-        }else{
-            localStorage.removeItem('token')
-            navigate("/")
-        }
-            
-
-    }
-
-    const getFincas = async () => {
-
-        let response = await fetch("https://riegoback.herokuapp.com/finca/user/" + userId, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")
-            }
-        })
-        
-        if(response.status === 200){
-            let dataResponse = await response.json();
-            console.log(dataResponse.fincas);
-            setdataFincas(dataResponse.fincas);
-            setviewData(true)
-        }
-    }
-
-
-    useEffect(() => {
-        getUser();
-    }, []);
-
-
-    useEffect(() => {
-        if (userId !== 0) {
-            getFincas();
-        }
-    }, [userId]);
-
-
-    const cul = dataFincas.map((datos, index) => {
-        return <Card key={index} card={datos} rutaToDetalle="/fincas/detalle"/>;
-    })
-
-
 
     return (
         <Fragment>
 
-            <div className="container-fluid" >
+            <div className="container-fluid" style={{"padding-left": "18%"}}>
                 <div className="row ">
-                    <div className="col-3 px-5 py-3">
-                        <h1 className="mt-3 mb-3 px-2 ">Fincas </h1>
-                        <div className="dropdown-divider  "></div>
-                        <div className="px-2 " >
-                            <h2 className="text-primary fs-5" > Total Registros: {' ' + dataFincas.length} </h2>
+                    <div className="row px-5">
+                        <div className='col-2 mt-3 '>
+                            <h1 className="">Fincas </h1>
                         </div>
-                        <div className="dropdown-divider " ></div>
+                        <div className='col-1 mt-3'>
+                            <div className='mt-2'><Link className='btn text-white ' style={{"background":"#2c4464"}} to="crear" >Añardir</Link></div>
+                        </div>
+                        <div className='col-2 mt-3 '>
+                            <div className='mt-2'><Link className='btn text-white ' style={{"background":"#2c4464"}} to="lista" >Ver Fincas</Link></div>
+                        </div>
                     </div>
-                    <div className="col-9 px-3 py-3">
-                        <div className="row">
-                            {
-                                viewData? cul:null
-                            }
+                    <div className=" px-5 ">
+                        <div>
+                            <Outlet />
                         </div>
                     </div>
                 </div>

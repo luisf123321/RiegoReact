@@ -5,7 +5,17 @@ import * as biIcon from 'react-icons/bi'
 export const sidebardata =[
     {
         "title":"home",
+        "path":"/Home",
+        "icon": < boootsIcon.BsHouseDoorFill />
+    },
+    {
+        "title":"Propiedades",
         "path":"/fincas",
+        "icon": < boootsIcon.BsHouseDoorFill />
+    },
+    {
+        "title":"Riego",
+        "path":"/riego",
         "icon": < boootsIcon.BsHouseDoorFill />
     },
     
@@ -16,7 +26,7 @@ export const sidebardata =[
     },
 
     {
-        "title":"Prediction",
+        "title":"Muestra de Suelo",
         "path":"/prediction",
         "icon": < giIcon.GiFarmTractor />
     }
