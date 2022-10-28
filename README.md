@@ -39,5 +39,6 @@ heroku config:set NODE_OPTIONS="--max_old_space_size=2560" -a riego-react
 "start": "node --max_old_space_size=2560 node_modules/.bin/react-scripts start",
 "build": "node --max_old_space_size=2560 node_modules/.bin/react-scripts build",
 
+
 ## heroku link 
 https://riego-react.herokuapp.com/
