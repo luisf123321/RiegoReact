@@ -54,6 +54,7 @@ const FincaDetalle = () => {
     }
 
     useEffect(() => {
+        document.body.style.background = "#EDEFF0";
         getFincaDetail();
     }, []);
 

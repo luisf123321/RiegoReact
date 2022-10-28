@@ -27,7 +27,6 @@ const RoutesPageFinca = () => {
                         path="/"
                         element={<ListFinca />}
                     />
-
                 </Route>
                 <Route path="/detalle" element={<FincaDetalle />} >
                     <Route

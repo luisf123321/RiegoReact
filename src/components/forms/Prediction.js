@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import VistaPrediction from './VistaPrediction';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
-import VentanaModal from '../../components/modals/VentanaModal';
 import Draggable, { DraggableCore } from "react-draggable";
 import Arena from "../../Assets/Arena.svg"
 import Arcilla from "../../Assets/Arcilla.svg"
@@ -236,9 +235,6 @@ const Prediction = (props) => {
                 </div>
 
             </div>
-            <Routes>
-                <Route path='modal' element={<VentanaModal />} />
-            </Routes>
         </div>
     );
 }

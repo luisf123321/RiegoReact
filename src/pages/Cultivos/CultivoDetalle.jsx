@@ -24,6 +24,7 @@ const CultivoDetalle = () => {
     }
 
     useEffect(() => {
+        document.body.style.background = "#c1c5ca";
         getCultivoDetail();
     }, []);
     return (

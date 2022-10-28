@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import Select from "react-select";
-
+import LogoPlanta from "../../Assets/Logo_planta_2.svg"
 
 const cultivoSchema = Yup.object().shape(
     {
@@ -21,7 +21,7 @@ const cultivoSchema = Yup.object().shape(
 const CultivosForm = () => {
     const initialCredentials = {
         nombre: '',
-        fechaInicio:new Date(),
+        fechaInicio: new Date(),
         fechaFinal: new Date(),
         tipoCultivo: '',
         user_id: 0,
@@ -68,17 +68,17 @@ const CultivosForm = () => {
                 initialValues={initialCredentials}
                 validationSchema={cultivoSchema}
 
-                onSubmit={async(values) => {
+                onSubmit={async (values) => {
                     console.log("envio");
                     console.log(values);
-                }}              
+                }}
 
             >
                 {
                     ({ values, touched, dirty, errors, isSubmitting, handleReset, setFieldTouched, setFieldValue }) => (
-                        <div className="container">
-                            <div className="row mt-3 mb-3 ">
-                                <div className="col-lg-9 px-52mx-3 mb-3">
+                        <div className="container-fluid  bg-white border rounded-5">
+                            <div className="row mt-3 mb-3 px-2 py-2">
+                                <div className="col-lg-8 ">
                                     <Form>
                                         <div className="form-group mt-3 m-2 mr-2 mb-2 ">
                                             <label htmlFor="nombre" > Nombre del cultivo </label>
@@ -98,7 +98,7 @@ const CultivosForm = () => {
                                                 valueDateInitial={values.fechaInicio}
                                                 onChange={setFieldValue}
                                                 onBlur={setFieldTouched}
-                                                onChangeDays ={setdays}
+                                                onChangeDays={setdays}
                                                 error={errors.tipoCultivo}
                                                 touched={touched.tipoCultivo}
                                             />
@@ -106,7 +106,7 @@ const CultivosForm = () => {
                                         <div className='row'>
                                             <div className="col form-group  mt-3 m-2 mr-2 mb-2">
                                                 <label htmlFor='fechaInicio' > Fecha inicio </label>
-                                                <DatePicker selected={values.fechaInicio} className="form-control" onChange={date => {setFieldValue('fechaInicio', date);setFieldValue('fechaFinal', new Date(new Date().setDate(date.getDate() + days)));}} />
+                                                <DatePicker selected={values.fechaInicio} className="form-control" onChange={date => { setFieldValue('fechaInicio', date); setFieldValue('fechaFinal', new Date(new Date().setDate(date.getDate() + days))); }} />
                                                 {
                                                     errors.fechaInicio && touched.fechaInicio && (
                                                         <ErrorMessage style={{ color: "red", marginTop: ".5rem" }} name='fechaInicio' component="div" ></ErrorMessage>
@@ -139,6 +139,10 @@ const CultivosForm = () => {
                                             Limpiar
                                         </button>
                                     </Form>
+                                </div>
+                                <div className='col-lg-4 d-flex justify-content-center'>
+                                    <img src={LogoPlanta} alt="SVG logo image"   width={260} height={260} />
+
                                 </div>
 
                             </div>

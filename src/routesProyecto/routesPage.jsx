@@ -12,6 +12,8 @@ import RoutePageLote from './routePageLote';
 import RegistroPage from '../pages/auth/RegistroPage';
 import RoutePageHome from './routePageHome';
 import RoutePagePredicion from './routePagePredicion';
+import RoutePageRiego from './routePageRiego';
+import RoutePagePerfil from './routePagePerfil';
 const RoutesPage = () => {
 
     const token = localStorage.getItem("token");
@@ -21,7 +23,7 @@ const RoutesPage = () => {
     return (
          <BrowserRouter>
            
-            <Routes>
+            <Routes  >
                 <Route exact={true} path="/" element={<LoginPage />} />
                 <Route exact={true} path="/singup" element={<RegistroPage />} />
                 <Route exact={true} path="/home/*" element={<RoutePageHome />} />
@@ -30,9 +32,9 @@ const RoutesPage = () => {
                 <Route exact={true} path="/fincas/*" element={<RoutesPageFinca />} />
                 <Route exact={true} path="/sectores/*" element={<RoutePageSectores />} />
                 <Route exact={true} path="/prediction/*" element={<RoutePagePredicion />} />
-                <Route exact={true} path="/perfil/*" element={<RoutePagePredicion />} />
+                <Route exact={true} path="/riego/*" element={<RoutePageRiego />} />
+                <Route exact={true} path="/perfil/*" element={<RoutePagePerfil />} />
                 <Route path='*' element={<NotFoundPage />} />
-
             </Routes>
         </BrowserRouter>        
     );

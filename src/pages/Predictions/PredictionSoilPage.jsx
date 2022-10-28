@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Prediction from '../../components/forms/Prediction';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
-import VentanaModal from '../../components/modals/VentanaModal';
+
 
 const PredictionSoilPage = () => {
+
+    useEffect(() => {
+        document.body.style.background = "#c1c5ca";
+    }, []);
     return (
         <div className='container-fluid ' style={{ "padding-left": "18%","background":"#c1c5ca" }}>
             <div className='row pt-3'>

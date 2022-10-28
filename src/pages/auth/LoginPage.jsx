@@ -39,7 +39,7 @@ const LoginPage = () => {
     useEffect(() => {
 
         if (status) {
-            navigate("/fincas");
+            navigate("/home");
         }
     }, [status]);
 

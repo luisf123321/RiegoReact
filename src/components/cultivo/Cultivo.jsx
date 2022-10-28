@@ -64,8 +64,8 @@ const Cultivo = () => {
 
 
     return (
-        <div className='container'>
-            <div className='row'>
+        <div className='container-fluid bg-white border rounded-5'>
+            <div className='row-fluid px-5 py-5 '>
                 <table class="table table-striped">
                     <thead>
                         <tr>
