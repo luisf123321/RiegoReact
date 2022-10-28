@@ -7,7 +7,6 @@ const Cultivo = () => {
     const [cultivos, setcultivos] = useState([]);
     const [userId, setuserId] = useState(0);
     const navigate = useNavigate();
-
     const getUser = async () => {
         let response = await fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
             method: 'GET',
@@ -51,6 +50,11 @@ const Cultivo = () => {
         getUser();
     }, []);
 
+    const viewInformation = (id) => {
+        sessionStorage.setItem("idCultivo", id);
+
+    }
+
 
     useEffect(() => {
         if (userId !== 0) {
@@ -76,14 +80,15 @@ const Cultivo = () => {
                         {
                             cultivos.map((cultivo, index) => (
                                 <tr>
-                                    <th scope="row">{index + 1 }</th>
+                                    <th scope="row">{index + 1}</th>
                                     <td>{cultivo.cultivoNombre}</td>
                                     <td>{cultivo.fechaInicio}</td>
                                     <td>{cultivo.fechaFinal}</td>
                                     <td>
-                                        <button className='btn btn-light'><i class="bi bi-pen"></i></button>
                                         <button className='btn btn-danger'><i class="bi bi-trash-fill" /></button>
-                                        <button className='btn btn-secondary'> <Link to="" /> <i class="bi bi-eye-fill"></i></button>
+                                        <Link className='btn btn-secondary' onClick={viewInformation(cultivo.id)} to="/cultivos/detalle" >
+                                            <i class="bi bi-eye-fill"></i>
+                                        </Link>
                                     </td>
                                 </tr>
 

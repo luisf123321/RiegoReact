@@ -115,7 +115,7 @@ const CultivosForm = () => {
                                             </div>
                                             <div className="col form-group  mt-3 m-2 mr-2 mb-2">
                                                 <label htmlFor='fechaFinal' > Fecha final </label>
-                                                <DatePicker selected={values.fechaFinal} className="form-control" onChange={date => setFieldValue('fechaFinal', date)} />
+                                                <DatePicker disabled={true} selected={values.fechaFinal} className="form-control" onChange={date => setFieldValue('fechaFinal', date)} />
                                                 {
                                                     errors.fechaFinal && touched.fechaFinal && (
                                                         <ErrorMessage style={{ color: "red", marginTop: ".5rem" }} name='fechaFinal' component="div" ></ErrorMessage>

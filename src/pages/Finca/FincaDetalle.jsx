@@ -1,7 +1,6 @@
 import React, { Component, Fragment, useState, useEffect, useId } from 'react';
 import '../../Styles/css/card.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import Card from '../../components/Card/Card';
 import { useLocation } from "react-router-dom";
 import { Link, Outlet } from "react-router-dom";
 import LogoLat from "../../Assets/Logo_location_lat.svg"
