@@ -2,7 +2,7 @@ import React from 'react';
 import LogoName from "../../Assets/Logo_name.svg"
 const HomePage = () => {
     return (
-        <div style={{ "padding-left": "18%" }}>            
+        <div style={{ "padding-left": "18%", "padding-top": "5%"}}>            
             <div className='col-md-5 offset-md-3 mt-5 pt-5 '>
                 <img src={LogoName}  width={588} height={240} />
             </div>

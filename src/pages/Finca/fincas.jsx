@@ -11,11 +11,14 @@ const Fincas = () => {
     const [userId, setuserId] = useState(0);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        document.body.style.background = "#EDEFF0";    
+    }, []);
 
     return (
         <Fragment>
 
-            <div className="container-fluid" style={{"padding-left": "18%"}}>
+            <div className="container-fluid" style={{ "padding-left": "18%", "padding-top": "5%"}}>
                 <div className="row ">
                     <div className="row px-5">
                         <div className='col-2 mt-3 '>

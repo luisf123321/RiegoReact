@@ -1,7 +1,7 @@
 .menu-bars {
     margin-left: 1rem;
     font-size: 2rem;   
-    position: relative;
+    
     
 }
 
@@ -10,10 +10,11 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    position:absolute;
+    position:fixed;
     transition: 850ms;
     left: -100%;
-    top: auto;
+    top: 10%;
+
     
 }
 

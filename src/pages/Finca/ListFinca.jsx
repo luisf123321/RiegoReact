@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState, useEffect, useId } from 'react';
+import React, {  useState, useEffect } from 'react';
 import '../../Styles/css/card.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from '../../components/Card/Card';

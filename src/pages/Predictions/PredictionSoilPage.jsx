@@ -9,7 +9,7 @@ const PredictionSoilPage = () => {
         document.body.style.background = "#c1c5ca";
     }, []);
     return (
-        <div className='container-fluid ' style={{ "padding-left": "18%","background":"#c1c5ca" }}>
+        <div className='container-fluid ' style={{ "padding-left": "18%","background":"#c1c5ca","padding-top": "5%" }}  >
             <div className='row pt-3'>
                 <h1 className='px-5'>Muestras de suelo</h1>
                 <div className='px-5 pt-3'>

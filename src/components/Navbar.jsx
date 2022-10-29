@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { sidebardata } from "../Assets/DataSidebar";
 import * as boootsIcon from 'react-icons/bs';
@@ -12,10 +12,34 @@ function Navbar() {
 
     const token = localStorage.getItem("token");
 
+    const [datausuario, setdatausuario] = useState({});
+
+    const getUser = async () => {
+        let response = await fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
+        });
+
+        if (response.status === 200) {
+            let data = await response.json();
+            setdatausuario(data);
+        } 
+
+
+    }
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
 
     return (
         <>
-            <div className="navbar navbar-expand-lg " style={{ "background": "#172d44" }}>
+            <div className="navbar navbar-expand-lg fixed-top  " style={{ "background": "#172d44" }}>
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="navbarScroll">
                         <Link to="/home" className='mx-4 me-auto  my-lg-0 ' >
@@ -26,17 +50,17 @@ function Navbar() {
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-person-circle " style={{ "font-size": " 25px" }}></i>
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end " >
+                                <ul class="dropdown-menu dropdown-menu-end " style={{"width":"300px"}} >
                                     <div className=' mx-2 my-2 '>
                                         <div className='d-flex justify-content-center'>
                                             <i class="bi bi-person-circle " style={{ "font-size": " 65px" }}></i>
                                         </div>
-                                        <div>
-                                            <p className='fs-6'>
-                                                nombre
+                                        <div className='px-2'>
+                                            <p className='fs-6 my-0'>
+                                                Nombre: {datausuario.nombre}
                                             </p>
-                                            <p className='fs-6'>
-                                                correo
+                                            <p className='fs-6 my-0'>
+                                                Correo: {datausuario.correo}
                                             </p>
                                         </div>
 

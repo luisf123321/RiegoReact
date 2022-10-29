@@ -61,7 +61,7 @@ const FincaDetalle = () => {
 
 
     return (
-        <div className="container-fluid" style={{ "padding-left": "18%"}} >
+        <div className="container-fluid" style={{ "padding-left": "18%", "padding-top": "5%"}} >
             <div className="row-fluid ">
                 <div className='row pt-2' style={{"background":"#bfc8ce"}} >
                     <div className='col '>
