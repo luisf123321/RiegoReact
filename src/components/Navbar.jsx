@@ -48,7 +48,7 @@ function Navbar() {
                         <ul class="navbar-nav mx-2 " >
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-person-circle " style={{ "font-size": " 25px" }}></i>
+                                {datausuario.username} <i class="bi bi-person-circle " style={{ "font-size": " 25px" }}></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end " style={{"width":"300px"}} >
                                     <div className=' mx-2 my-2 '>

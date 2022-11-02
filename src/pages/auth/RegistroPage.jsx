@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import RegistroForm from '../../components/forms/RegistroForm';
 import Logo from "../../Assets/Logo_Riego.svg"
 const RegistroPage = () => {
+    useEffect(() => {
+        document.body.style.background = "#34495c";
+    }, []);
     return (
         <div className="container-fluid py-5 " style={{"background":"#34495c"}}>
             <div className="row mt-3 mb-3 px-5">

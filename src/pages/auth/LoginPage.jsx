@@ -33,6 +33,7 @@ const LoginPage = () => {
     }
 
     useEffect(() => {
+        document.body.style.background = "#34495c";
         getUser();
     }, []);
 
@@ -44,7 +45,7 @@ const LoginPage = () => {
     }, [status]);
 
     return (
-        <div className="container-fluid py-5 " style={{"background":"#34495c"}} >
+        <div className="container-fluid py-5 " >
             <div className="row py-5">
                 <div className='col-lg-5 mt-5 mx-5 px-5 '>
                     <img src={Logo} alt="SVG logo image" width={450} height={450} />

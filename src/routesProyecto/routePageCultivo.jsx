@@ -5,6 +5,7 @@ import Cultivo from '../components/cultivo/Cultivo';
 import CultivosForm from '../components/forms/CultivosForm';
 import Navbar from '../components/Navbar';
 import CultivoDetalle from '../pages/Cultivos/CultivoDetalle';
+import Sectores from '../pages/Sectores/Sectores';
 const RoutePageCultivo = () => {
     return (
         <>
@@ -35,7 +36,7 @@ const RoutePageCultivo = () => {
                     />
                     <Route
                         path="sectores"
-                        element={<CultivosForm />}
+                        element={<Sectores />}
                     />         
                 </Route>
 

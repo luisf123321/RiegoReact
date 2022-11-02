@@ -118,7 +118,7 @@ const CultivoDetalle = () => {
                             <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="update" state={{ data: dataCultivo }}>Actualizar Cultivo</Link>
                         </div>
                     </div>
-                    <div className='mt-2 mx-5 px-5'>
+                    <div className='mt-2 mx-5 px-5 py-3'>
                         <Outlet />
                     </div>
 

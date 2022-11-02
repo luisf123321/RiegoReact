@@ -51,6 +51,7 @@ const Cultivo = () => {
     }, []);
 
     const viewInformation = (id) => {
+        console.log(id)
         sessionStorage.setItem("idCultivo", id);
 
     }
@@ -86,7 +87,7 @@ const Cultivo = () => {
                                     <td>{cultivo.fechaFinal}</td>
                                     <td>
                                         <button className='btn btn-danger'><i class="bi bi-trash-fill" /></button>
-                                        <Link className='btn btn-secondary' onClick={viewInformation(cultivo.id)} to="/cultivos/detalle" >
+                                        <Link className='btn btn-secondary' onClick={() => viewInformation(cultivo.id)} to="/cultivos/detalle" >
                                             <i class="bi bi-eye-fill"></i>
                                         </Link>
                                     </td>
