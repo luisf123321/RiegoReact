@@ -102,12 +102,12 @@ const FincaForm = () => {
             >
 
                 {
-                    ({ touched, errors, isSubmitting }) => (
-                        
+                    ({ touched, errors, isSubmitting, dirty,handleReset }) => (
+                        <div className="container-fluid mt-4 pb-4 bg-white border rounded-5">
 
                         <div className='mx-2 px-5'>
                         {viewAler ? <Alertinfo message={message} styleAlert={style} ></Alertinfo> : null}
-                            <h1 className="mt-5 text-primary">Agregar Nueva Finca</h1>
+                            <h2 className="mt-3" style={{ "text_color": "#4D626C" }}>Agregar Nueva Finca</h2>                            
                             <Form>
                                 <div className='row'>
                                     <div className=" col form-group mt-3 m-2 mr-2 mb-2 ">
@@ -160,12 +160,21 @@ const FincaForm = () => {
                                         }
                                     </div>
                                 </div>
-                                <button type='submit' className="btn btn-primary btn-block mt-3 m-2 mr-2 mb-2">Enviar</button>
+                                <button type='submit' className="btn text-white btn-block mt-3 m-2 mr-2 mb-2" style={{"background":"#2c4464"}}>Enviar</button>
 
                                 {
                                     isSubmitting ? (<p>login your credenciales</p>) : null
                                 }
+                                <button
+                                            type="button"
+                                            className="btn btn-secondary btn-block mt-3 m-2 mr-2 mb-2"
+                                            onClick={handleReset}
+                                            disabled={!dirty || isSubmitting}
+                                        >
+                                            Limpiar
+                                        </button>
                             </Form>
+                        </div>
                         </div>
 
                     )}

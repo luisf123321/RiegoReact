@@ -27,7 +27,7 @@ function Navbar() {
         if (response.status === 200) {
             let data = await response.json();
             setdatausuario(data);
-        } 
+        }
 
 
     }
@@ -46,11 +46,16 @@ function Navbar() {
                             <img src={Logo} alt="SVG logo image" width={116} height={54} />
                         </Link>
                         <ul class="navbar-nav mx-2 " >
+                            <li>
+                                <Link class="nav-link text-white  mx-2 my-2" to="/home">
+                                        <i class="bi bi-bell-fill"></i>
+                                </Link>
+                            </li>
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {datausuario.username} <i class="bi bi-person-circle " style={{ "font-size": " 25px" }}></i>
+                                    {datausuario.username} <i class="bi bi-person-circle " style={{ "font-size": " 25px" }}></i>
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end " style={{"width":"300px"}} >
+                                <ul class="dropdown-menu dropdown-menu-end " style={{ "width": "300px" }} >
                                     <div className=' mx-2 my-2 '>
                                         <div className='d-flex justify-content-center'>
                                             <i class="bi bi-person-circle " style={{ "font-size": " 65px" }}></i>
@@ -71,6 +76,7 @@ function Navbar() {
                                     <li><a class="dropdown-item d-flex" href="#">Cerrar Session</a></li>
                                 </ul>
                             </li>
+
                         </ul>
                     </div>
                 </div>

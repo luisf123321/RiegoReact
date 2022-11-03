@@ -126,7 +126,7 @@ const CultivosForm = () => {
 
                                         </div>
 
-                                        <button type='submit' className="btn btn-primary btn-block mt-3 m-2 mr-2 mb-2">Guardar</button>
+                                        <button type='submit' className="btn text-white btn-block mt-3 m-2 mr-2 mb-2"  style={{"background":"#2c4464"}}>Guardar</button>
                                         {
                                             isSubmitting ? (<p>create Registros</p>) : null
                                         }

@@ -5,6 +5,7 @@ import Riegos from '../pages/riego/Riegos';
 import AdminRiegoForm from '../components/forms/AdminRiegoForm';
 import DispositivosForm from '../components/forms/DispositivosForm'; 
 import RiegoList from '../components/riego/RiegoList';
+import DispositivosList from '../components/riego/DispositivosList';
 const RoutePageRiego = () => {
     return (
         <>
@@ -14,6 +15,10 @@ const RoutePageRiego = () => {
                     <Route
                         path="riego_admins"
                         element={<RiegoList />}
+                    />
+                    <Route
+                        path="dispositive_admins"
+                        element={<DispositivosList />}
                     />
                     <Route
                         path="new_admin"

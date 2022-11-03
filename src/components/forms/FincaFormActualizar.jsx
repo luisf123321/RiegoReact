@@ -21,7 +21,7 @@ const FincaFormActulizar = () => {
     const [style, setstyle] = useState('');
     const location = useLocation();
     const data = location.state?.data;
-   
+
     const initialCredentials = {
         nombre: data.nombre,
         direccion: data.direccion,
@@ -29,7 +29,7 @@ const FincaFormActulizar = () => {
         longitud: data.longitud,
         altitud: data.altitud,
         user_is: data.usuario,
-        id:data.id
+        id: data.id
     }
 
     const getUser = async () => {
@@ -70,7 +70,7 @@ const FincaFormActulizar = () => {
         console.log(data.direccion);
         location.state.setDataUpdate(data);
 
-        await fetch('https://riegoback.herokuapp.com/finca/'+data.id, {
+        await fetch('https://riegoback.herokuapp.com/finca/' + data.id, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -111,72 +111,81 @@ const FincaFormActulizar = () => {
             >
 
                 {
-                    ({ touched, errors, isSubmitting }) => (
-                        
+                    ({ touched, errors, isSubmitting, dirty, handleReset }) => (
 
-                        <div className='mx-2 px-5'>
-                        {viewAler ? <Alertinfo message={message} styleAlert={style} ></Alertinfo> : null}
-                            <h1 className="mt-5 text-primary">Agregar Nueva Finca</h1>
-                            <Form>
-                                <div className='row'>
-                                    <div className=" col form-group mt-3 m-2 mr-2 mb-2 ">
-                                        <label htmlFor="nombre" > Nombre </label>
-                                        <Field id="nombre" className="form-control" type="text" name="nombre" placeholder="nombre" />
-                                        {
-                                            errors.nombre && touched.nombre && (
-                                                <ErrorMessage name='nombre' component="div" ></ErrorMessage>
-                                            )
-                                        }
+                        <div className="container-fluid pb-4 bg-white border rounded-5">
+                            <div className='mx-2 px-5'>
+                                {viewAler ? <Alertinfo message={message} styleAlert={style} ></Alertinfo> : null}
+                                
+                                <h2 className="mt-3" style={{ "text_color": "#4D626C" }}>Actualizar Finca</h2>
+                                <Form>
+                                    <div className='row'>
+                                        <div className=" col form-group mt-3 m-2 mr-2 mb-2 ">
+                                            <label htmlFor="nombre" > Nombre </label>
+                                            <Field id="nombre" className="form-control" type="text" name="nombre" placeholder="nombre" />
+                                            {
+                                                errors.nombre && touched.nombre && (
+                                                    <ErrorMessage name='nombre' component="div" ></ErrorMessage>
+                                                )
+                                            }
+                                        </div>
+                                        <div className="col form-group  mt-3 m-2 mr-2 mb-2">
+
+                                            <label htmlFor='direccion' > direccion </label>
+                                            <Field id="direccion" className="form-control" type="text" name="direccion" placeholder="direccion" />
+                                            {
+                                                errors.direccion && touched.direccion && (
+                                                    <ErrorMessage name='direccion' component="div" ></ErrorMessage>
+                                                )
+                                            }
+                                        </div>
                                     </div>
-                                    <div className="col form-group  mt-3 m-2 mr-2 mb-2">
+                                    <div className='row'>
+                                        <div className=" col form-group  mt-3 m-2 mr-2 mb-2">
 
-                                        <label htmlFor='direccion' > direccion </label>
-                                        <Field id="direccion" className="form-control" type="text" name="direccion" placeholder="direccion" />
-                                        {
-                                            errors.direccion && touched.direccion && (
-                                                <ErrorMessage name='direccion' component="div" ></ErrorMessage>
-                                            )
-                                        }
+                                            <label htmlFor='latitud' > Latitud </label>
+                                            <Field id="latitud" className="form-control" type="number" name="latitud" placeholder="latitud" />
+                                            {
+                                                errors.latitud && touched.latitud && (
+                                                    <ErrorMessage name='direccion' component="div" ></ErrorMessage>
+                                                )
+                                            }
+                                        </div><div className=" col form-group  mt-3 m-2 mr-2 mb-2">
+
+                                            <label htmlFor='longitud' > Longitud </label>
+                                            <Field id="longitud" className="form-control" type="number" name="longitud" placeholder="longitud" />
+                                            {
+                                                errors.longitud && touched.longitud && (
+                                                    <ErrorMessage name='longitud' component="div" ></ErrorMessage>
+                                                )
+                                            }
+                                        </div><div className="col form-group  mt-3 m-2 mr-2 mb-2">
+
+                                            <label htmlFor='altitud' > Altitud </label>
+                                            <Field id="altitud" className="form-control" type="number" name="altitud" placeholder="altitud" />
+                                            {
+                                                errors.altitud && touched.altitud && (
+                                                    <ErrorMessage name='altitud' component="div" ></ErrorMessage>
+                                                )
+                                            }
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='row'>
-                                    <div className=" col form-group  mt-3 m-2 mr-2 mb-2">
+                                    <button type='submit' className="btn text-white btn-block mt-3 m-2 mr-2 mb-2" style={{"background":"#2c4464"}}>Enviar</button>
 
-                                        <label htmlFor='latitud' > Latitud </label>
-                                        <Field id="latitud" className="form-control" type="number" name="latitud" placeholder="latitud" />
-                                        {
-                                            errors.latitud && touched.latitud && (
-                                                <ErrorMessage name='direccion' component="div" ></ErrorMessage>
-                                            )
-                                        }
-                                    </div><div className=" col form-group  mt-3 m-2 mr-2 mb-2">
-
-                                        <label htmlFor='longitud' > Longitud </label>
-                                        <Field id="longitud" className="form-control" type="number" name="longitud" placeholder="longitud" />
-                                        {
-                                            errors.longitud && touched.longitud && (
-                                                <ErrorMessage name='longitud' component="div" ></ErrorMessage>
-                                            )
-                                        }
-                                    </div><div className="col form-group  mt-3 m-2 mr-2 mb-2">
-
-                                        <label htmlFor='altitud' > Altitud </label>
-                                        <Field id="altitud" className="form-control" type="number" name="altitud" placeholder="altitud" />
-                                        {
-                                            errors.altitud && touched.altitud && (
-                                                <ErrorMessage name='altitud' component="div" ></ErrorMessage>
-                                            )
-                                        }
-                                    </div>
-                                </div>
-                                <button type='submit' className="btn btn-primary btn-block mt-3 m-2 mr-2 mb-2">Enviar</button>
-
-                                {
-                                    isSubmitting ? (<p>login your credenciales</p>) : null
-                                }
-                            </Form>
+                                    {
+                                        isSubmitting ? (<p>login your credenciales</p>) : null
+                                    }
+                                    <button
+                                            type="button"
+                                            className="btn btn-secondary btn-block mt-3 m-2 mr-2 mb-2"
+                                            onClick={handleReset}
+                                            disabled={!dirty || isSubmitting}
+                                        >
+                                            Limpiar
+                                        </button>
+                                </Form>
+                            </div>
                         </div>
-
                     )}
 
             </Formik>
