@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/RiegoReact/static/css/main.d937fed5.css",
+    "main.js": "/RiegoReact/static/js/main.e841189c.js",
+    "static/js/787.84983943.chunk.js": "/RiegoReact/static/js/787.84983943.chunk.js",
+    "static/media/bootstrap-icons.woff?": "/RiegoReact/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
+    "static/media/bootstrap-icons.woff2?": "/RiegoReact/static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
+    "static/media/Logo_grande.svg": "/RiegoReact/static/media/Logo_grande.d4d96711b8a44c2b77a5a3d2f448af1f.svg",
+    "static/media/Logo_name.svg": "/RiegoReact/static/media/Logo_name.066c8be04e508038b683d157fbe591a2.svg",
+    "static/media/Logo_Riego.svg": "/RiegoReact/static/media/Logo_Riego.9f9d653286865c913689c180a2e9d663.svg",
+    "static/media/Logo_planta.svg": "/RiegoReact/static/media/Logo_planta.81d732370e9e6db7dffc34a47849bfe8.svg",
+    "static/media/Logo_planta_2.svg": "/RiegoReact/static/media/Logo_planta_2.34b6852e1369964948bfc805e24a043b.svg",
+    "static/media/Logo_cultivo_list.svg": "/RiegoReact/static/media/Logo_cultivo_list.2a5a3e224464be04adf9b669c71a7aaa.svg",
+    "static/media/Logo_propiedades_list.svg": "/RiegoReact/static/media/Logo_propiedades_list.3e02e09b83174922876a2a0eecd8cd39.svg",
+    "static/media/Logo_location_long.svg": "/RiegoReact/static/media/Logo_location_long.f8e029ec69f02bb24b5bf5b978ac4732.svg",
+    "index.html": "/RiegoReact/index.html",
+    "static/media/Arcilla.svg": "/RiegoReact/static/media/Arcilla.ecf0692da01db36962d588a6b5472336.svg",
+    "static/media/Arena.svg": "/RiegoReact/static/media/Arena.a5e6881fc5acaf71bcc66dbceaea0d11.svg",
+    "static/media/Fondo.svg": "/RiegoReact/static/media/Fondo.a46c4a3bcb5a767df19473dfabc089f6.svg",
+    "static/media/Limo.svg": "/RiegoReact/static/media/Limo.779508011a35db4bf1f18588ac9f6ef4.svg",
+    "static/media/Logo_riego_list.svg": "/RiegoReact/static/media/Logo_riego_list.dffed00d238f2da1982cc86b5d65cec8.svg",
+    "static/media/Logo_muestra_list.svg": "/RiegoReact/static/media/Logo_muestra_list.b81413e28095ac056ed54e67eb477c29.svg",
+    "static/media/Logo_location_lat.svg": "/RiegoReact/static/media/Logo_location_lat.01601ece91030242501f7b30fdb4c173.svg",
+    "main.d937fed5.css.map": "/RiegoReact/static/css/main.d937fed5.css.map",
+    "main.e841189c.js.map": "/RiegoReact/static/js/main.e841189c.js.map",
+    "787.84983943.chunk.js.map": "/RiegoReact/static/js/787.84983943.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d937fed5.css",
+    "static/js/main.e841189c.js"
+  ]
+}
