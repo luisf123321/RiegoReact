@@ -3,7 +3,8 @@ import Perfil from '../pages/perfil/Perfil';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import UpdateUsuario from '../components/forms/UpdateUsuario';
-import CambioContrasena from '../components/forms/CambioContrasena';
+import ChangePassword from '../components/forms/ChangePassword';
+import PerfilInfo from '../pages/perfil/PerfilInfo';
 const RoutePagePerfil = () => {
     return (
         <>
@@ -16,9 +17,16 @@ const RoutePagePerfil = () => {
                     />
                      <Route
                         path="cambio"
-                        element={<CambioContrasena />}
+                        element={<ChangePassword />}
                     />
-                    
+                    <Route
+                        path="/"
+                        element={<PerfilInfo />}
+                    />
+                    <Route
+                        path="info"
+                        element={<PerfilInfo />}
+                    />
                 </Route>
 
             </Routes>
