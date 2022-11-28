@@ -9,13 +9,23 @@ const  SimpleMap = (props) =>{
       lat: props.lat,
       lng: props.long
     },
-    zoom: 15
+    zoom: props.zoom
   };
+
+  const handleClick = (event) => {
+    console.log("click data location")
+    console.log(event)
+    var latidud = event.lat; 
+    var  longitud = event.lng; 
+    console.log(latidud); 
+    console.log(longitud)
+  }
 
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: '10rem', width: '100%' }}>
+    <div style={{ height: props.height, width: '100%' }}>
       <GoogleMapReact
+        onClick={(e) => handleClick(e)}
         bootstrapURLKeys={{ key: "AIzaSyBD_lGr3qZKvjz7FZu4bpwcxMHayyJ6Qc8" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}

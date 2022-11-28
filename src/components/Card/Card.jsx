@@ -17,7 +17,7 @@ const Card = (props) => {
 
     return (
         <Fragment>
-            <div onClick={onClickDetalle} className="card px-2 mx-2 my-2" style={{ "width": "18rem", "height": "20rem" }}>
+            <div onClick={onClickDetalle} className="card px-2 mx-2 my-2" style={{ "width": "20rem", "height": "22rem" }}>
 
                 <div className="card-body">
                     <h5 className="card-title">{props.card.nombre}</h5>
@@ -25,7 +25,7 @@ const Card = (props) => {
                     <p className="card-text fs-6"> <strong>Longitud:</strong>  {props.card.longitud}</p>
                    
                     <div>
-                        <SimpleMap lat={props.card.latidud} long={props.card.longitud} />
+                        <SimpleMap lat={props.card.latidud} long={props.card.longitud} height={"12rem"} zoom={15} />
                     </div>
                 </div>
             </div>

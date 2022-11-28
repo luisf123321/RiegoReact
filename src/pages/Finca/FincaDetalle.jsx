@@ -147,7 +147,7 @@ const FincaDetalle = () => {
                             <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="create" state={{ data: dataFinca.id }}>Nuevo Lote</Link>
                         </div>
                         <div className='col-3 d-grid'>
-                            <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="update" state={{ data: dataFinca }}>Actualizar Finca</Link>
+                            <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="update" state={{ data: dataFinca}}>Actualizar Finca</Link>
                         </div>
                     </div>
                     <div className='mt-2 mx-5 px-5'>

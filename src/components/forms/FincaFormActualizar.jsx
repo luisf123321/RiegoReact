@@ -21,7 +21,6 @@ const FincaFormActulizar = () => {
     const [style, setstyle] = useState('');
     const location = useLocation();
     const data = location.state?.data;
-
     const initialCredentials = {
         nombre: data.nombre,
         direccion: data.direccion,
@@ -68,7 +67,8 @@ const FincaFormActulizar = () => {
         data.nombre = payload.nombre;
         data.direccion = payload.direccion;
         console.log(data.direccion);
-        location.state.setDataUpdate(data);
+        location.state.getDataFincaRuta();
+
 
         await fetch('https://riegoback.herokuapp.com/finca/' + data.id, {
             method: 'PUT',
@@ -116,7 +116,7 @@ const FincaFormActulizar = () => {
                         <div className="container-fluid pb-4 bg-white border rounded-5">
                             <div className='mx-2 px-5'>
                                 {viewAler ? <Alertinfo message={message} styleAlert={style} ></Alertinfo> : null}
-                                
+
                                 <h2 className="mt-3" style={{ "text_color": "#4D626C" }}>Actualizar Finca</h2>
                                 <Form>
                                     <div className='row'>
@@ -170,19 +170,20 @@ const FincaFormActulizar = () => {
                                             }
                                         </div>
                                     </div>
-                                    <button type='submit' className="btn text-white btn-block mt-3 m-2 mr-2 mb-2" style={{"background":"#2c4464"}}>Enviar</button>
+                                    <button type='submit' className="btn text-white btn-block mt-3 m-2 mr-2 mb-2" style={{ "background": "#2c4464" }}>Enviar</button>
 
+
+                                    <button
+                                        type="button"
+                                        className="btn btn-secondary btn-block mt-3 m-2 mr-2 mb-2"
+                                        onClick={handleReset}
+                                        disabled={!dirty || isSubmitting}
+                                    >
+                                        Limpiar
+                                    </button>
                                     {
                                         isSubmitting ? (<p>login your credenciales</p>) : null
                                     }
-                                    <button
-                                            type="button"
-                                            className="btn btn-secondary btn-block mt-3 m-2 mr-2 mb-2"
-                                            onClick={handleReset}
-                                            disabled={!dirty || isSubmitting}
-                                        >
-                                            Limpiar
-                                        </button>
                                 </Form>
                             </div>
                         </div>
