@@ -36,7 +36,7 @@ const ChangePassword = () => {
                     ({ touched, errors, isSubmitting }) => (
 
                         <>
-                            <h1 className="mt-5 " style={{ "text_color": "#4D626C" }}>Inicio de Sesion</h1>
+                            <h1 className="mt-3 " style={{ "text_color": "#4D626C" }}>Cambiar contraseña</h1>
                             <Form>
                                 <div className="form-group mt-2">
 
@@ -50,14 +50,14 @@ const ChangePassword = () => {
                                 </div>
                                 <div className="form-group mt-3">
                                     <label htmlFor="changepassword" > Confirmar Contraseña </label>
-                                    <Field id="changepassword" className="form-control" type="text" name="changepassword" placeholder="example123" />
+                                    <Field id="changepassword" className="form-control"  type="password" name="changepassword" placeholder="password" />
                                     {
                                         errors.changepassword && touched.changepassword && (
                                             <ErrorMessage name='changepassword' component="div" ></ErrorMessage>
                                         )
                                     }
                                 </div>
-                                <button type='submit' className="btn btn-block mt-2 text-white " style={{ "background": "#2c4464" }}>Iniciar Sesion</button>
+                                <button type='submit' className="btn btn-block mt-2 text-white " style={{ "background": "#2c4464" }}>Cambiar contraseña</button>
                                 {
                                     isSubmitting ? (<p>login your credenciales</p>) : null
                                 }

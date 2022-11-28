@@ -22,9 +22,9 @@ const Perfil = () => {
                         <div className='mx-3 px-3'>
                             <div class="row">
                                 <div class="col-12 mt-3">
-                                    <Link className='btn btn-primary mx-3' to={"info"} >Información Personal</Link>
-                                    <Link className=' btn btn-primary mx-3' to={"cambio"} >Cambio de Contraseña</Link>
-                                    <Link className=' btn btn-primary mx-3' to={"usuario"} >Actualizar Usuario</Link>
+                                    <Link className='btn text-white mx-3' style={{ "background": "#2c4464" }} to={"info"} >Información Personal</Link>
+                                    <Link className=' btn text-white mx-3' style={{ "background": "#2c4464" }} to={"cambio"} >Cambio de Contraseña</Link>
+                                    <Link className=' btn text-white mx-3' style={{ "background": "#2c4464" }} to={"usuario"} >Actualizar Usuario</Link>
                                 </div>
                                 <div className='mt-3'>
                                     <Outlet/>
