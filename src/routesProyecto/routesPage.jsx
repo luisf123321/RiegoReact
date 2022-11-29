@@ -14,6 +14,7 @@ import RoutePageHome from './routePageHome';
 import RoutePagePredicion from './routePagePredicion';
 import RoutePageRiego from './routePageRiego';
 import RoutePagePerfil from './routePagePerfil';
+import RoutePageNotifications from './routePageNotifications';
 const RoutesPage = () => {
 
     const token = localStorage.getItem("token");
@@ -34,6 +35,7 @@ const RoutesPage = () => {
                 <Route exact={true} path="/prediction/*" element={<RoutePagePredicion />} />
                 <Route exact={true} path="/riego/*" element={<RoutePageRiego />} />
                 <Route exact={true} path="/perfil/*" element={<RoutePagePerfil />} />
+                <Route exact={true} path="/notifications/*" element={<RoutePageNotifications />} />
                 <Route path='*' element={<NotFoundPage />} />
             </Routes>
         </BrowserRouter>        

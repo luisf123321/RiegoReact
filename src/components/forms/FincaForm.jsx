@@ -4,7 +4,8 @@ import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import Alertinfo from '../alerts/alertinfo';
 import SimpleMap from '../mapa/map';
-import GoogleMapReact from 'google-map-react';
+import  GoogleMapReact  from 'google-map-react';
+
 const fincaSchema = Yup.object().shape(
     {
         nombre: Yup.string().required("username is requerido"),
@@ -163,8 +164,8 @@ const FincaForm = () => {
                                         </div>
                                     </div>
                                     <div className='row mt-2 mx-1'>
-                                        <MyMapFinca                                                                                        
-                                                onChange={setFieldValue}
+                                        <MyMapFinca
+                                            onChange={setFieldValue}
                                         />
                                     </div>
 
@@ -198,22 +199,24 @@ class MyMapFinca extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {center: {
-            lat: 2.5,
-            lng: -75
-          } };
+        this.state = {
+            center: {
+                lat: 2.5,
+                lng: -75
+            }
+        };
     }
 
-    handleClick  = event => {
+    handleClick = event => {
         console.log("click data location")
         console.log(event)
-        var latidud = event.lat; 
-        var  longitud = event.lng; 
-        console.log(latidud); 
+        var latidud = event.lat;
+        var longitud = event.lng;
+        console.log(latidud);
         console.log(longitud)
         this.props.onChange("latitud", latidud);
         this.props.onChange("longitud", longitud);
-      }
+    }
 
     render() {
         return (
@@ -224,7 +227,8 @@ class MyMapFinca extends React.Component {
                     defaultCenter={this.state.center}
                     defaultZoom={5}
                 >
-                
+                   
+
                 </GoogleMapReact>
             </div>
         );

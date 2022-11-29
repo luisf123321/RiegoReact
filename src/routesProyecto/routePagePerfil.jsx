@@ -11,11 +11,11 @@ const RoutePagePerfil = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Perfil />} >
-                <Route
+                    <Route
                         path="usuario"
                         element={<UpdateUsuario />}
                     />
-                     <Route
+                    <Route
                         path="cambio"
                         element={<ChangePassword />}
                     />

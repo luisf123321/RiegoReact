@@ -46,6 +46,7 @@ const RoutesPageFinca = () => {
                         path="update"
                         element={<FincaFormActulizar />}
                     />
+                    
                 </Route>
             </Routes>   </>
     );

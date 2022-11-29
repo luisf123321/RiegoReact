@@ -47,7 +47,7 @@ function Navbar() {
                         </Link>
                         <ul class="navbar-nav mx-2 " >
                             <li>
-                                <Link class="nav-link text-white  mx-2 my-2" to="/home">
+                                <Link class="nav-link text-white  mx-2 my-2" to="/notifications">
                                         <i class="bi bi-bell-fill"></i>
                                 </Link>
                             </li>
