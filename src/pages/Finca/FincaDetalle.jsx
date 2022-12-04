@@ -18,7 +18,7 @@ const FincaDetalle = () => {
     const getFincaDetail = async () => {
         let idfinca = location.state.idItem;
         console.log(idfinca)
-        let response = await fetch("https://riegoback.herokuapp.com/finca/" + sessionStorage.getItem("idFinca"), {
+        let response = await fetch("https://sirbic.up.railway.app/finca/" + sessionStorage.getItem("idFinca"), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -38,7 +38,7 @@ const FincaDetalle = () => {
 
 
     const getClima = async (lat, long) => {
-        let response = await fetch("https://riegoback.herokuapp.com/clima/coordenadas/" + lat + "/" + long, {
+        let response = await fetch("https://sirbic.up.railway.app/clima/coordenadas/" + lat + "/" + long, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',

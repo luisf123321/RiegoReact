@@ -12,7 +12,7 @@ const FincaLotes = () => {
     const data = location.state?.data;
     const getLotes = async () => {
         let idfinca = data;
-        let response = await fetch("https://riegoback.herokuapp.com/lote/finca/" + idfinca, {
+        let response = await fetch("https://sirbic.up.railway.app/lote/finca/" + idfinca, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',

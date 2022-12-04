@@ -6,7 +6,7 @@ const LoteDetalle = () => {
     const [dataLote, setdataLote] = useState({});
 
     const getLoteInformation = async () => {
-        let response = await fetch("https://riegoback.herokuapp.com/lote/" + sessionStorage.getItem("idLote"), {
+        let response = await fetch("https://sirbic.up.railway.app/lote/" + sessionStorage.getItem("idLote"), {
             method: "GET",
             headers: {
                 'Accept': 'application/json',

@@ -9,7 +9,7 @@ const LoginPage = () => {
     const [status, setstatus] = useState(false);
     const getUser = async () => {
         if (localStorage.getItem("token") !== undefined) {
-            let response = await fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
+            let response = await fetch("https://sirbic.up.railway.app/auth/who_am_i", {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',

@@ -7,7 +7,7 @@ const Sectores = () => {
     const [dataSectores, setdataSectores] = useState([]);
     const navigate = useNavigate();
     const getSectoresByCultivo = async() =>{
-        let response = await fetch("https://riegoback.herokuapp.com/sectores/cultivo/" + sessionStorage.getItem("idCultivo"), {
+        let response = await fetch("https://sirbic.up.railway.app/sectores/cultivo/" + sessionStorage.getItem("idCultivo"), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

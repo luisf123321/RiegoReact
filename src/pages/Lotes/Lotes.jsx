@@ -9,7 +9,7 @@ const Lotes = () => {
 
     const getLotes = async()=>{
         let idfinca = location.state.idItem;
-        await fetch("https://riegoback.herokuapp.com/lote/finca/"+idfinca, {
+        await fetch("https://sirbic.up.railway.app/lote/finca/"+idfinca, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',

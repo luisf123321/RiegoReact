@@ -6,7 +6,7 @@ const CultivoDetalle = () => {
 
     const [dataCultivo, setdataCultivo] = useState({});
     const getCultivoDetail = async () => {
-        let response = await fetch("https://riegoback.herokuapp.com/cultivo/" + sessionStorage.getItem("idCultivo"), {
+        let response = await fetch("https://sirbic.up.railway.app/cultivo/" + sessionStorage.getItem("idCultivo"), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

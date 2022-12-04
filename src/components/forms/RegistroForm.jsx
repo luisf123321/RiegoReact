@@ -55,7 +55,7 @@ const RegistroForm = () => {
                     };
                     console.log(values.tipo_identificacion.value);
                     console.log(payload);
-                    await fetch('https://riegoback.herokuapp.com/auth/signup', {
+                    await fetch('https://sirbic.up.railway.app/auth/signup', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',

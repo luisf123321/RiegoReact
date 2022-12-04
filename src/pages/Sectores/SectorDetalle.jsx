@@ -6,7 +6,7 @@ const SectorDetalle = () => {
     const [dataSectores, setdataSectores] = useState({});
     
     const getSectorInformation = async() =>{
-        let response = await fetch("https://riegoback.herokuapp.com/sectores/" + sessionStorage.getItem("idSector"), {
+        let response = await fetch("https://sirbic.up.railway.app/sectores/" + sessionStorage.getItem("idSector"), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

@@ -29,7 +29,7 @@ const LoginForm = () => {
                 validationSchema={loginSchema}
 
                 onSubmit={async (values) => {
-                    await fetch('https://riegoback.herokuapp.com/auth/login', {
+                    await fetch('https://sirbic.up.railway.app/auth/login', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',

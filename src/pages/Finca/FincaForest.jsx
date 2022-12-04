@@ -12,7 +12,7 @@ const FincaForest = (props) => {
     const long = location.state?.long;
     const [dataFores, setdataFores] = useState([]);
     const getFores = async (lat, long) => {
-        let response = await fetch("https://riegoback.herokuapp.com/clima/forecast/coordenadas/" + lat + "/" + long, {
+        let response = await fetch("https://sirbic.up.railway.app/clima/forecast/coordenadas/" + lat + "/" + long, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
