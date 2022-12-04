@@ -121,7 +121,7 @@ const Prediction = (props) => {
             image: imageBase
         }
 
-        await fetch("https://riegoback.herokuapp.com/prediction/upload", {
+        await fetch("https://sirbic.up.railway.app/prediction/upload", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

@@ -158,7 +158,7 @@ class MySelectTipoRiego extends React.Component {
     };
 
     async componentDidMount() {
-        let response = await fetch("https://riegoback.herokuapp.com/riego/tipo", {
+        let response = await fetch("https://sirbic.up.railway.app/riego/tipo", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

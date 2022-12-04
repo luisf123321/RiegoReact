@@ -44,7 +44,7 @@ const ListFinca = () => {
 
     const getFincas = async () => {
 
-        let response = await fetch("https://riegoback.herokuapp.com/finca/user/" + userId, {
+        let response = await fetch("https://sirbic.up.railway.app/finca/user/" + userId, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

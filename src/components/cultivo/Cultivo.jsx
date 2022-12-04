@@ -8,7 +8,7 @@ const Cultivo = () => {
     const [userId, setuserId] = useState(0);
     const navigate = useNavigate();
     const getUser = async () => {
-        let response = await fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
+        let response = await fetch("https://sirbic.up.railway.app/auth/who_am_i", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -30,7 +30,7 @@ const Cultivo = () => {
 
     const getCultivos = async () => {
 
-        let response = await fetch("https://riegoback.herokuapp.com/cultivo/user/" + userId, {
+        let response = await fetch("https://sirbic.up.railway.app/cultivo/user/" + userId, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

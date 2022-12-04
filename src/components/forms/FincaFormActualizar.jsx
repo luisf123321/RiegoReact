@@ -32,7 +32,7 @@ const FincaFormActulizar = () => {
     }
 
     const getUser = async () => {
-        let response = await fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
+        let response = await fetch("https://sirbic.up.railway.app/auth/who_am_i", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -70,7 +70,7 @@ const FincaFormActulizar = () => {
         location.state.getDataFincaRuta();
 
 
-        await fetch('https://riegoback.herokuapp.com/finca/' + data.id, {
+        await fetch('https://sirbic.up.railway.app/finca/' + data.id, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',

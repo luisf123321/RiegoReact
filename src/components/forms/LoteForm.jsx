@@ -40,7 +40,7 @@ const LoteForm = () => {
             finca_id: data,
         };
         console.log(payload)
-        await fetch('https://riegoback.herokuapp.com/lote', {
+        await fetch('https://sirbic.up.railway.app/lote', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
