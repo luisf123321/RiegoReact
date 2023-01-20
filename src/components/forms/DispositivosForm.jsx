@@ -147,7 +147,7 @@ class MySelectDispositivo extends React.Component {
     };
 
     async componentDidMount() {
-        let response = await fetch("https://sirbic.up.railway.app/cultivo/tipos", {
+        let response = await fetch("https://sirbic.up.railway.app/riego/tipodispositivo", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

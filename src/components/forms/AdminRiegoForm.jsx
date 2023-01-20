@@ -213,7 +213,7 @@ class MySelectSectores extends React.Component {
     };
 
     async componentDidMount() {
-        let response = await fetch("https://riegoback.herokuapp.com/auth/who_am_i", {
+        let response = await fetch("https://sirbic.up.railway.app/auth/who_am_i", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -229,7 +229,7 @@ class MySelectSectores extends React.Component {
     }
 
     getSectores = async (usuario) => {
-        let response = await fetch("https://riegoback.herokuapp.com/sectores/usuario/" + usuario, {
+        let response = await fetch("https://sirbic.up.railway.app/sectores/usuario/" + usuario, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
