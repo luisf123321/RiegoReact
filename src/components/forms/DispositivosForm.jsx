@@ -1,8 +1,9 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { Formik, Field, Form, ErrorMessage, useFormik } from 'formik';
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import Select from "react-select";
+import Alertinfo from '../alerts/alertinfo';
 
 const dispositivoSchema = Yup.object().shape(
     {
@@ -18,6 +19,8 @@ const dispositivoSchema = Yup.object().shape(
     }
 );
 
+
+
 const DispositivosForm = () => {
 
     
@@ -27,6 +30,47 @@ const DispositivosForm = () => {
         tipoDispositivo: '',
         tipoSector: ''
     }
+
+    const onSubmitForm = async (values) => {
+        console.log("values dispositivo");
+        console.log(values);
+        const payload = {
+            ...values,
+            tipoDispositivo: values.tipoDispositivo.id,
+            tipoSector:values.tipoSector.id
+        };
+        console.log(payload)
+    
+        await fetch('https://sirbic.up.railway.app/riego/dispositivo', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            },
+            body: JSON.stringify(payload),
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                setmessage(data.message);
+                if (data.code == 200) {
+                    setstyle("success");
+                }
+                if (data.code == 400) {
+                    setstyle("warning");
+                }
+                setviewAler(true);
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    
+    }
+
+    const [viewAler, setviewAler] = useState(false);
+    const [style, setstyle] = useState('');
+    const [message, setmessage] = useState('');
     return (
         <div>
 
@@ -35,8 +79,7 @@ const DispositivosForm = () => {
                 validationSchema={dispositivoSchema}
 
                 onSubmit={async (values) => {
-                    console.log("envio");
-                    console.log(values);
+                    onSubmitForm(values)
                 }}
 
             >
@@ -44,6 +87,7 @@ const DispositivosForm = () => {
                     ({ values, touched, dirty, errors, isSubmitting, handleReset, setFieldTouched, setFieldValue }) => (
                         <div className="container-fluid  bg-white border rounded-5">
                             <div className="row-fluid m-3 p-3">
+                            {viewAler ? <Alertinfo message={message} styleAlert={style} ></Alertinfo> : null}
                                 <h2 className="mb-3" style={{ "text_color": "#4D626C" }}>Agregar Nuevo Dispositivo</h2>                                
                                 <div className="mt-3">
                                     <Form>

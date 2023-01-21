@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Formik, Field, Form, ErrorMessage, useFormik } from 'formik';
 import * as Yup from 'yup'
 import Select from "react-select";
+import Alertinfo from '../alerts/alertinfo';
+
 
 const adminRiegoSchema = Yup.object().shape(
     {
@@ -28,6 +30,47 @@ const AdminRiegoForm = () => {
         radio: ''
     }
 
+    const onSubmitForm = async (values) => {
+        console.log("values admin riego");
+        console.log(values);
+        const payload = {
+            ...values,
+            tipoRiego: values.tipoRiego.id,
+            tipoSector:values.tipoSector.id
+        };
+        console.log(payload)
+    
+        await fetch('https://sirbic.up.railway.app/riego/admin', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            },
+            body: JSON.stringify(payload),
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                setmessage(data.message);
+                if (data.code == 200) {
+                    setstyle("success");
+                }
+                if (data.code == 400) {
+                    setstyle("warning");
+                }
+                setviewAler(true);
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    
+    }
+
+    const [viewAler, setviewAler] = useState(false);
+    const [style, setstyle] = useState('');
+    const [message, setmessage] = useState('');
+
 
     return (
         <div>
@@ -37,8 +80,7 @@ const AdminRiegoForm = () => {
                 validationSchema={adminRiegoSchema}
 
                 onSubmit={async (values) => {
-                    console.log("envio");
-                    console.log(values);
+                    onSubmitForm(values)
                 }}
 
             >
@@ -46,6 +88,7 @@ const AdminRiegoForm = () => {
                     ({ values, touched, dirty, errors, isSubmitting, handleReset, setFieldTouched, setFieldValue }) => (
                         <div className="container-fluid  bg-white border rounded-5">
                             <div className="row-fluid m-3 p-3">
+                            {viewAler ? <Alertinfo message={message} styleAlert={style} ></Alertinfo> : null}
                             <h2 className="mb-3" style={{ "text_color": "#4D626C" }}>Agregar Nueva Gestión De Riego</h2>
                                
                                 <div className="mt-3">

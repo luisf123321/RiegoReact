@@ -30,6 +30,9 @@ const CultivosForm = () => {
     const [status, setstatus] = useState(false);
     const [userId, setuserId] = useState(0);
     const [dateInitial, setdateInitial] = useState(new Date());
+    const [viewAler, setviewAler] = useState(false);
+    const [style, setstyle] = useState('');
+    const [message, setmessage] = useState('');
     const getUser = async () => {
         if (localStorage.getItem("token") !== undefined) {
             let response = await fetch("https://sirbic.up.railway.app/auth/who_am_i", {
@@ -57,6 +60,44 @@ const CultivosForm = () => {
 
     }
 
+    const onSubmitForm = async (values) => {
+        console.log("values finca");
+        console.log(values);
+        const payload = {
+            ...values,
+            tipoCultivo: values.tipoCultivo.id,
+            fechaInicio: values.fechaInicio
+
+        };
+        console.log(payload)
+        /*
+
+        await fetch('https://sirbic.up.railway.app/finca', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            },
+            body: JSON.stringify(payload),
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                setmessage(data.message);
+                if (data.code == 200) {
+                    setstyle("success");
+                }
+                if (data.code == 400) {
+                    setstyle("warning");
+                }
+                setviewAler(true);
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            });*/
+
+    }
 
     useEffect(() => {
         getUser();
@@ -69,8 +110,7 @@ const CultivosForm = () => {
                 validationSchema={cultivoSchema}
 
                 onSubmit={async (values) => {
-                    console.log("envio");
-                    console.log(values);
+                    onSubmitForm(values)
                 }}
 
             >
@@ -126,7 +166,7 @@ const CultivosForm = () => {
 
                                         </div>
 
-                                        <button type='submit' className="btn text-white btn-block mt-3 m-2 mr-2 mb-2"  style={{"background":"#2c4464"}}>Guardar</button>
+                                        <button type='submit' className="btn text-white btn-block mt-3 m-2 mr-2 mb-2" style={{ "background": "#2c4464" }}>Guardar</button>
                                         {
                                             isSubmitting ? (<p>create Registros</p>) : null
                                         }
@@ -141,7 +181,7 @@ const CultivosForm = () => {
                                     </Form>
                                 </div>
                                 <div className='col-lg-4 d-flex justify-content-center'>
-                                    <img src={LogoPlanta} alt="SVG logo image"   width={260} height={260} />
+                                    <img src={LogoPlanta} alt="SVG logo image" width={260} height={260} />
 
                                 </div>
 
@@ -179,7 +219,7 @@ class MySelect extends React.Component {
     };
 
     async componentDidMount() {
-        let response = await fetch("https://riegoback.herokuapp.com/cultivo/tipos", {
+        let response = await fetch("https://sirbic.up.railway.app/cultivo/tipos", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
