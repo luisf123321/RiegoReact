@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-
-const Sectores = () => {
-
+const LoteSectores = () => {
     const [dataSectores, setdataSectores] = useState([]);
     const navigate = useNavigate();
     const getSectoresByCultivo = async () => {
-        let response = await fetch("https://sirbic.up.railway.app/sectores/cultivo/" + sessionStorage.getItem("idCultivo"), {
+        let response = await fetch("https://sirbic.up.railway.app/sectores/lote/" + sessionStorage.getItem("idLote"), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -84,4 +81,4 @@ const Sectores = () => {
     );
 }
 
-export default Sectores;
+export default LoteSectores;

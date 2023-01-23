@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import Select from "react-select";
 import LogoPlanta from "../../Assets/Logo_planta_2.svg"
+import Alertinfo from '../alerts/alertinfo';
 
 const cultivoSchema = Yup.object().shape(
     {
@@ -118,6 +119,7 @@ const CultivosForm = () => {
                     ({ values, touched, dirty, errors, isSubmitting, handleReset, setFieldTouched, setFieldValue }) => (
                         <div className="container-fluid  bg-white border rounded-5">
                             <div className="row mt-3 mb-3 px-2 py-2">
+                                {viewAler ? <Alertinfo message={message} styleAlert={style} ></Alertinfo> : null}
                                 <div className="col-lg-8 ">
                                     <Form>
                                         <div className="form-group mt-3 m-2 mr-2 mb-2 ">
@@ -131,7 +133,7 @@ const CultivosForm = () => {
                                             }
                                         </div>
                                         <div className="form-group mt-3 m-2 mr-2 mb-2 ">
-                                            <label htmlFor="nombre" > Nombre del cultivo </label>
+                                            <label htmlFor="nombre" > Tipo del cultivo </label>
 
                                             <MySelect
                                                 value={values.tipoCultivo}

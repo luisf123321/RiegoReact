@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import LogoLat from "../../Assets/Logo_location_lat.svg"
 import LogoLong from "../../Assets/Logo_location_long.svg"
+import { Link, Outlet } from "react-router-dom";
 const LoteDetalle = () => {
 
     const [dataLote, setdataLote] = useState({});
@@ -26,7 +27,7 @@ const LoteDetalle = () => {
     }, []);
 
     return (
-        <div className="container-fluid"  style={{ "padding-left": "18%", "padding-top": "5%"}}>
+        <div className="container-fluid" style={{ "padding-left": "18%", "padding-top": "5%" }}>
             <div className="row-fluid ">
                 <div className='row pt-2' style={{ "background": "#bfc8ce" }} >
                     <div className='col '>
@@ -75,6 +76,24 @@ const LoteDetalle = () => {
                             </div>
                         </div>
                     </div>
+
+                </div>
+                <div className="col-12  py-3">
+                    <div className='row mt-2 mx-5 px-5'>
+                        <div className='col-3 d-grid'>
+                            <Link className='btn text-white' style={{ "background": "#2c4464" }} to="create" state={{ data: dataLote }}>Añadir sector</Link>
+                        </div>
+                        <div className='col-3 d-grid'>
+                            <Link className='btn text-white' style={{ "background": "#2c4464" }} to="sectores" state={{ data: dataLote.id }}>Sectores</Link>
+                        </div>
+                        <div className='col-3 d-grid'>
+                            <Link className='btn text-white' style={{ "background": "#2c4464" }} to="update" state={{ data: dataLote }}>Actualizar Lote</Link>
+                        </div>
+                    </div>
+                    <div className='mt-2 mx-5 px-5'>
+                        <Outlet />
+                    </div>
+
                 </div>
             </div>
         </div>
