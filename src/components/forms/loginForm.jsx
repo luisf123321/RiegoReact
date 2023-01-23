@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage, useFormik } from 'formik';
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import Logo from "../../Assets/Logo_Riego.svg"
-
+import Alertinfo from '../alerts/alertinfo';
 const loginSchema = Yup.object().shape(
     {
         username: Yup.string().required("username is requerido"),
@@ -20,6 +20,9 @@ const LoginForm = () => {
 
 
     const navigate = useNavigate();
+    const [viewAler, setviewAler] = useState(false);
+    const [message, setmessage] = useState('');
+    const [style, setstyle] = useState('');
 
 
     return (
@@ -39,9 +42,19 @@ const LoginForm = () => {
                     })
                         .then(resp => resp.json())
                         .then(data => {
-                            localStorage.setItem("token", data.access_token);
-                            console.log(data.access_token);
-                            navigate('/home');
+                            if (data.access_token !== undefined) {
+                                localStorage.setItem("token", data.access_token);
+                                console.log(data.access_token);
+                                setmessage(data)
+                                setstyle("success");
+                                navigate('/home');
+                            } else {
+                                console.log(data)
+                                setmessage(data)
+                                setstyle("warning");
+                            };
+
+                            setviewAler(true);
                         })
                         .catch(error => {
                             console.log(error)
@@ -53,6 +66,8 @@ const LoginForm = () => {
                     ({ touched, errors, isSubmitting }) => (
 
                         <>
+                            {viewAler ? <Alertinfo message={message} styleAlert={style} ></Alertinfo> : null}
+
                             <h1 className="mt-5 " style={{ "text_color": "#4D626C" }}>Inicio de Sesion</h1>
                             <Form>
                                 <div className="form-group mt-3">
@@ -74,7 +89,7 @@ const LoginForm = () => {
                                         )
                                     }
                                 </div>
-                                <button type='submit' className="btn btn-block mt-2 text-white "  style={{ "background": "#2c4464" }}>Iniciar Sesion</button>
+                                <button type='submit' className="btn btn-block mt-2 text-white " style={{ "background": "#2c4464" }}>Iniciar Sesion</button>
                                 {
                                     isSubmitting ? (<p>login your credenciales</p>) : null
                                 }

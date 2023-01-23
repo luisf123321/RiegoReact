@@ -36,7 +36,10 @@ const FincaLotes = () => {
     return (
         <div>
             <div className="row ">
-                {viewData ? Lot : null}
+                {viewData ? Lot : <div className='row mt-3 pt-3'>
+                    <h2>No tiene lotes registradas</h2>
+                    <p>Por favor crear un lote</p>
+                </div>}
             </div>
         </div>
     );

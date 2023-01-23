@@ -23,6 +23,7 @@ const LoteForm = () => {
     const data = location.state?.data;
 
 
+
     const initialCredentials = {
         nombre: '',
         area: 0,
@@ -37,7 +38,7 @@ const LoteForm = () => {
         console.log(values);
         const payload = {
             ...values,
-            finca_id: data,
+            finca_id: data.id,
         };
         console.log(payload)
         await fetch('https://sirbic.up.railway.app/lote', {
@@ -77,7 +78,7 @@ const LoteForm = () => {
             >
 
                 {
-                    ({ touched, errors, isSubmitting, dirty, handleReset,setFieldValue }) => (
+                    ({ touched, errors, isSubmitting, dirty, handleReset, setFieldValue }) => (
                         <div className="container-fluid pb-4 bg-white border rounded-5">
                             <div className="mx-2 px-5 mb-3 mt-3">
                                 {viewAler ? <Alertinfo message={message} styleAlert={style} ></Alertinfo> : null}
@@ -126,7 +127,7 @@ const LoteForm = () => {
                                         </div><div className="col form-group  mt-3 m-2 mr-2 mb-2">
 
                                             <label htmlFor='altitud' > Altitud </label>
-                                            <Field  disabled="true" id="altitud" className="form-control" type="number" name="altitud" placeholder="altitud" />
+                                            <Field disabled="true" id="altitud" className="form-control" type="number" name="altitud" placeholder="altitud" />
                                             {
                                                 errors.altitud && touched.altitud && (
                                                     <ErrorMessage name='altitud' component="div" ></ErrorMessage>
@@ -135,8 +136,10 @@ const LoteForm = () => {
                                         </div>
                                     </div>
                                     <div className='row mt-2 mx-1'>
-                                        <MyMapLote                                                                                        
-                                                onChange={setFieldValue}
+                                        <MyMapLote
+                                            onChange={setFieldValue}
+                                            longitud={data.longitud}
+                                            latitud={data.latidud}
                                         />
                                     </div>
                                     <button type='submit' className="btn text-white btn-block mt-3 m-2 mr-2 mb-2" style={{ "background": "#2c4464" }}>Enviar</button>
@@ -149,7 +152,7 @@ const LoteForm = () => {
                                     >
                                         Limpiar
                                     </button>
-                                    
+
                                 </Form>
                             </div>
                         </div>
@@ -165,22 +168,24 @@ class MyMapLote extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {center: {
-            lat: 2.5,
-            lng: -75
-          } };
+        this.state = {
+            center: {
+                lng: props.longitud,
+                lat: props.latitud
+            }
+        };
     }
 
-    handleClick  = event => {
+    handleClick = event => {
         console.log("click data location")
         console.log(event)
-        var latidud = event.lat; 
-        var  longitud = event.lng; 
-        console.log(latidud); 
+        var latidud = event.lat;
+        var longitud = event.lng;
+        console.log(latidud);
         console.log(longitud)
         this.props.onChange("latitud", latidud);
         this.props.onChange("longitud", longitud);
-      }
+    }
 
     render() {
         return (
@@ -189,9 +194,9 @@ class MyMapLote extends React.Component {
                     onClick={this.handleClick}
                     bootstrapURLKeys={{ key: "AIzaSyBD_lGr3qZKvjz7FZu4bpwcxMHayyJ6Qc8" }}
                     defaultCenter={this.state.center}
-                    defaultZoom={5}
+                    defaultZoom={15}
                 >
-                
+
                 </GoogleMapReact>
             </div>
         );

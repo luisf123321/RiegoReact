@@ -42,6 +42,13 @@ const RegistroForm = () => {
     const [viewAler, setviewAler] = useState(false);
     const [message, setmessage] = useState('');
     const [style, setstyle] = useState('');
+
+
+    const inisiarSession = () => {
+        navigate('/');
+    }
+
+
     return (
         <div>
             <Formik
@@ -80,7 +87,7 @@ const RegistroForm = () => {
                 }}
             >
                 {
-                    ({  dirty, values, touched, errors, isSubmitting, handleReset, setFieldTouched, setFieldValue }) => (
+                    ({ dirty, values, touched, errors, isSubmitting, handleReset, setFieldTouched, setFieldValue }) => (
                         <>
                             {viewAler ? <Alertinfo message={message} styleAlert={style} ></Alertinfo> : null}
                             <h1 style={{ "text_color": "#4D626C" }}>Registro</h1>
@@ -191,6 +198,8 @@ const RegistroForm = () => {
                                 >
                                     Reset
                                 </button>
+                                <button type='button' onClick={inisiarSession()} className="btn btn-block mt-3 mb-3 text-white" style={{ "background": "#2c4464" }}>Iniciar Sesion</button>
+
                             </Form>
                         </>
                     )

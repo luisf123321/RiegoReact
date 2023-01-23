@@ -44,6 +44,8 @@ const Cultivo = () => {
             console.log(dataResponse.cultivo)
             setcultivos(dataResponse.cultivo)
         }
+        console.log(cultivos)
+        console.log(cultivos.length)
 
     }
     useEffect(() => {
@@ -67,39 +69,49 @@ const Cultivo = () => {
     return (
         <div className='container-fluid bg-white border rounded-5'>
             <div className='row-fluid px-5 py-5 '>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Fecha Inicio</th>
-                            <th scope="col">Fecha Fin</th>
-                            <th scope="col">actiones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            cultivos.map((cultivo, index) => (
-                                <tr>
-                                    <th scope="row">{index + 1}</th>
-                                    <td>{cultivo.cultivoNombre}</td>
-                                    <td>{cultivo.fechaInicio}</td>
-                                    <td>{cultivo.fechaFinal}</td>
-                                    <td>
-                                        <button className='btn btn-danger'><i class="bi bi-trash-fill" /></button>
-                                        <Link className='btn btn-secondary' onClick={() => viewInformation(cultivo.id)} to="/cultivos/detalle" >
-                                            <i class="bi bi-eye-fill"></i>
-                                        </Link>
-                                    </td>
-                                </tr>
+                {cultivos.length > 0 ?
+                    <table class="table table-striped">
 
-                            ))
-                        }
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Fecha Inicio</th>
+                                <th scope="col">Fecha Fin</th>
+                                <th scope="col">actiones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+
+                                cultivos.map((cultivo, index) => (
+                                    <tr>
+                                        <th scope="row">{index + 1}</th>
+                                        <td>{cultivo.cultivoNombre}</td>
+                                        <td>{cultivo.fechaInicio}</td>
+                                        <td>{cultivo.fechaFinal}</td>
+                                        <td>
+                                            <button className='btn btn-danger'><i class="bi bi-trash-fill" /></button>
+                                            <Link className='btn btn-secondary' onClick={() => viewInformation(cultivo.id)} to="/cultivos/detalle" >
+                                                <i class="bi bi-eye-fill"></i>
+                                            </Link>
+                                        </td>
+                                    </tr>
+
+                                ))
+
+                            }
 
 
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
+                    :
+                    <div className='row'>
+                        <h2>No tiene cultivos registrados</h2>
+                        <p>Por favor crear un cultivo</p>
+                    </div>
+                }
             </div>
         </div>
     )

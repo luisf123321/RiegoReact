@@ -66,13 +66,13 @@ const CultivosForm = () => {
         const payload = {
             ...values,
             tipoCultivo: values.tipoCultivo.id,
-            fechaInicio: values.fechaInicio
+            user_id: userId
 
         };
         console.log(payload)
-        /*
 
-        await fetch('https://sirbic.up.railway.app/finca', {
+
+        await fetch('https://sirbic.up.railway.app/cultivo/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -95,7 +95,7 @@ const CultivosForm = () => {
             })
             .catch(error => {
                 console.log(error);
-            });*/
+            });
 
     }
 

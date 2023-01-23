@@ -8,10 +8,10 @@ import LogoLong from "../../Assets/Logo_location_long.svg"
 const FincaDetalle = () => {
     const [dataFinca, setdataFinca] = useState([]);
     const [datosClima, setdatosClima] = useState({
-        temp:{},
-        wind:{},
-        detail_status:'',
-        humedad:''
+        temp: {},
+        wind: {},
+        detail_status: '',
+        humedad: ''
     });
     const location = useLocation();
 
@@ -61,9 +61,9 @@ const FincaDetalle = () => {
 
 
     return (
-        <div className="container-fluid" style={{ "padding-left": "18%", "padding-top": "5%"}} >
+        <div className="container-fluid" style={{ "padding-left": "18%", "padding-top": "5%" }} >
             <div className="row-fluid ">
-                <div className='row pt-2' style={{"background":"#bfc8ce"}} >
+                <div className='row pt-2' style={{ "background": "#bfc8ce" }} >
                     <div className='col '>
                         <div className='row'>
                             <div className='col-1 px-3  mx-2 mt-2'>
@@ -138,16 +138,16 @@ const FincaDetalle = () => {
                 <div className="col-12  py-3">
                     <div className='row mt-2 mx-5 px-5'>
                         <div className='col-3 d-grid'>
-                            <Link className='btn text-white' style={{"background":"#2c4464"}}  to="fores" state={{ lat: dataFinca.latidud, long: dataFinca.longitud }}>Pronósticos</Link>
+                            <Link className='btn text-white' style={{ "background": "#2c4464" }} to="fores" state={{ lat: dataFinca.latidud, long: dataFinca.longitud }}>Pronósticos</Link>
                         </div>
                         <div className='col-3 d-grid'>
-                            <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="lotes" state={{ data: dataFinca.id }}>Lotes</Link>
+                            <Link className='btn text-white' style={{ "background": "#2c4464" }} to="lotes" state={{ data: dataFinca.id }}>Lotes</Link>
                         </div>
                         <div className='col-3 d-grid'>
-                            <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="create" state={{ data: dataFinca.id }}>Nuevo Lote</Link>
+                            <Link className='btn text-white' style={{ "background": "#2c4464" }} to="create" state={{ data: dataFinca }}>Nuevo Lote</Link>
                         </div>
                         <div className='col-3 d-grid'>
-                            <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="update" state={{ data: dataFinca}}>Actualizar Finca</Link>
+                            <Link className='btn text-white' style={{ "background": "#2c4464" }} to="update" state={{ data: dataFinca }}>Actualizar Finca</Link>
                         </div>
                     </div>
                     <div className='mt-2 mx-5 px-5'>

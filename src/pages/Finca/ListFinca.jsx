@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../Styles/css/card.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from '../../components/Card/Card';
@@ -65,12 +65,25 @@ const ListFinca = () => {
 
     return (
         <div className="row mt-5">
-            <div className="px-2 " >
-                <h2 className="text-primary fs-5" > Total de fincas registradas: {' ' + dataFincas.length} </h2>
-            </div>
+
+
             {
-                viewData ? cul : null
-            }
+                viewData ?
+                    <div>
+                        <div className="px-2 " >
+                            <h2 className="text-primary fs-5" > Total de fincas registradas: {' ' + dataFincas.length} </h2>
+                        </div>
+                        <div>{cul}</div>
+                    </div>
+                    :
+                    <div className='row'>
+                        <h2>No tiene fincas registradas</h2>
+                        <p>Por favor crear una finca</p>
+                    </div>
+            } :
+
+
+
         </div>
     );
 }

@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import Alertinfo from '../alerts/alertinfo';
 import SimpleMap from '../mapa/map';
-import  GoogleMapReact  from 'google-map-react';
+import GoogleMapReact from 'google-map-react';
 
 const fincaSchema = Yup.object().shape(
     {
@@ -181,7 +181,7 @@ const FincaForm = () => {
                                         Limpiar
                                     </button>
                                     {
-                                        isSubmitting ? (<p>login your credenciales</p>) : null
+                                        isSubmitting ? (<p>Validando los datos</p>) : null
                                     }
                                 </Form>
                             </div>
@@ -227,7 +227,7 @@ class MyMapFinca extends React.Component {
                     defaultCenter={this.state.center}
                     defaultZoom={5}
                 >
-                   
+
 
                 </GoogleMapReact>
             </div>
