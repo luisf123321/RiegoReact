@@ -72,8 +72,8 @@ const LoteSectores = () => {
                     </table>
                     :
                     <div className='row'>
-                        <h2>No tiene sectores relacionado al cultivo registrado</h2>
-                        <p>Por favor crear un sector asosiado a este cultivo</p>
+                        <h2>No tiene sectores relacionado al lote registrado</h2>
+                        <p>Por favor crear un sector asosiado a este lote</p>
                     </div>
                 }
             </div>

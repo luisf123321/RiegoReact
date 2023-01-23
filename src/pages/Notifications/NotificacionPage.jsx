@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CardNotification from '../../components/Card/CardNotification';
 const NotificacionPage = () => {
-    const [datosLotes, setdatoslotes] = useState([]);
+    const [datosNotificaciones, setDatosNotificaciones] = useState([]);
     const [viewData, setviewData] = useState(false);
 
     const getLotes = async () => {
@@ -29,11 +29,12 @@ const NotificacionPage = () => {
         });
         if (response.status === 200) {
             let dataResponse = await response.json();
-            setdatoslotes(dataResponse.lotes);
+            console.log(dataResponse)
+            setDatosNotificaciones(dataResponse.notificaciones);
             setviewData(true);
         }
     }
-    const Notification = datosLotes.map((datos, index) => {
+    const Notification = datosNotificaciones.map((datos, index) => {
         return <CardNotification key={index} card={datos} rutaToDetalle="/lotes/detalle" />;
     });
     useEffect(() => {
@@ -41,11 +42,11 @@ const NotificacionPage = () => {
     }, []);
 
     return (
-        <div>
-            <div className="row ">
+        <div className="container-fluid" style={{ "padding-left": "18%", "padding-top": "5%" }}>
+            <div className="row  m-3 p-3">
+                <h1>Notificaciones</h1>
                 {viewData ? Notification : <div className='row mt-3 pt-3'>
-                    <h2>No tiene lotes registradas</h2>
-                    <p>Por favor crear un lote</p>
+                    <h2>No tiene notificaciones </h2>
                 </div>}
             </div>
         </div>

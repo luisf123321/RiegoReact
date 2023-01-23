@@ -48,7 +48,9 @@ const SectorForm = () => {
             ...values,
             lote: data.id,
             cultivo: values.tipoCultivo.id,
-            tipoSuelo: values.tipoMuestra.tipoSuelo
+            tipoSuelo: values.tipoMuestra.tipoSuelo,
+            tipoMuestra: '',
+            tipoCultivo: ''
         };
         console.log(payload)
 

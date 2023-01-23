@@ -28,13 +28,13 @@ const CultivoDetalle = () => {
         getCultivoDetail();
     }, []);
     return (
-        <div className="container-fluid" style={{ "padding-left": "18%", "padding-top": "5%"}} >
+        <div className="container-fluid" style={{ "padding-left": "18%", "padding-top": "5%" }} >
             <div className="row-fluid ">
                 <div className='row pt-2' style={{ "background": "#bfc8ce" }} >
                     <div className='col '>
                         <div className='row'>
                             <div className='col-1 px-3  mx-2 '>
-                            <img src={LogoPlanta} alt="SVG logo image" width={30} height={30} />
+                                <img src={LogoPlanta} alt="SVG logo image" width={30} height={30} />
                             </div>
                             <div className='col'>
                                 <label htmlFor="username" className='fs-4 fw-bold' > Nombre:</label>
@@ -46,7 +46,7 @@ const CultivoDetalle = () => {
 
                         <div className='row'>
                             <div className='col-1 px-3 mx-2 '>
-                            <i class="bi bi-calendar3" style={{ "font-size": " 30px" }}></i>
+                                <i class="bi bi-calendar3" style={{ "font-size": " 30px" }}></i>
                             </div>
                             <div className='col'>
                                 <label htmlFor="username" className='fs-4 fw-bold' > Fecha de Siembra:</label>
@@ -69,7 +69,7 @@ const CultivoDetalle = () => {
                     <div className='col ' >
                         <div className='row'>
                             <div className='col-1 px-3 mx-2'>
-                            <i class="bi bi-calendar-check-fill" style={{ "font-size": " 30px" }}></i>
+                                <i class="bi bi-calendar-check-fill" style={{ "font-size": " 30px" }}></i>
                             </div>
                             <div className='col'>
                                 <label htmlFor="username" className='fs-4 fw-bold' > Etapa Actual:</label>
@@ -107,15 +107,13 @@ const CultivoDetalle = () => {
                 </div>
                 <div className="col-12  py-3">
                     <div className='row mt-2 mx-5 px-5'>
+
                         <div className='col-4 d-grid'>
-                            <Link className='btn text-white' style={{"background":"#2c4464"}}  to="estadisticas" state={{ data: dataCultivo }}>Estadisticas</Link>
+                            <Link className='btn text-white' style={{ "background": "#2c4464" }} to="sectores" state={{ data: dataCultivo }}>Sectores</Link>
                         </div>
+
                         <div className='col-4 d-grid'>
-                            <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="sectores" state={{ data:dataCultivo }}>Sectores</Link>
-                        </div>
-        
-                        <div className='col-4 d-grid'>
-                            <Link className='btn text-white'  style={{"background":"#2c4464"}}   to="update" state={{ data: dataCultivo }}>Actualizar Cultivo</Link>
+                            <Link className='btn text-white' style={{ "background": "#2c4464" }} to="update" state={{ data: dataCultivo }}>Actualizar Cultivo</Link>
                         </div>
                     </div>
                     <div className='mt-2 mx-5 px-5 py-3'>

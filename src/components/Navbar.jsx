@@ -48,25 +48,17 @@ function Navbar() {
                         <ul class="navbar-nav mx-2 " >
                             <li>
                                 <Link class="nav-link text-white  mx-2 my-2" to="/notifications">
-                                        <i class="bi bi-bell-fill"></i>
+                                    <i class="bi bi-bell-fill"></i>
                                 </Link>
                             </li>
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {datausuario.username} <i class="bi bi-person-circle " style={{ "font-size": " 25px" }}></i>
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end " style={{ "width": "300px" }} >
+                                <ul class="dropdown-menu dropdown-menu-end " style={{ "width": "250px" }} >
                                     <div className=' mx-2 my-2 '>
                                         <div className='d-flex justify-content-center'>
                                             <i class="bi bi-person-circle " style={{ "font-size": " 65px" }}></i>
-                                        </div>
-                                        <div className='px-2'>
-                                            <p className='fs-6 my-0'>
-                                                Nombre: {datausuario.nombre}
-                                            </p>
-                                            <p className='fs-6 my-0'>
-                                                Correo: {datausuario.correo}
-                                            </p>
                                         </div>
 
                                     </div>
