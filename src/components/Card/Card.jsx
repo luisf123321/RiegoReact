@@ -7,10 +7,10 @@ const Card = (props) => {
     const navigate = useNavigate();
 
     const onClickDetalle = () => {
-        if(props.isFinca){
-            sessionStorage.setItem("idFinca",props.card.id)
-        }else{
-            sessionStorage.setItem("idLote",props.card.id)
+        if (props.isFinca) {
+            sessionStorage.setItem("idFinca", props.card.id)
+        } else {
+            sessionStorage.setItem("idLote", props.card.id)
         }
         navigate(props.rutaToDetalle, { state: { idItem: props.card.id } })
     }
@@ -23,7 +23,7 @@ const Card = (props) => {
                     <h5 className="card-title">{props.card.nombre}</h5>
                     <p className="card-text fs-6"> <strong>Latitud:</strong> {props.card.latidud} </p>
                     <p className="card-text fs-6"> <strong>Longitud:</strong>  {props.card.longitud}</p>
-                   
+
                     <div>
                         <SimpleMap lat={props.card.latidud} long={props.card.longitud} height={"12rem"} zoom={15} />
                     </div>

@@ -1,21 +1,14 @@
-.menu-bars {
-    margin-left: 1rem;
-    font-size: 2rem;   
-    
-    
-}
-
 .nav-menu {
     width: 18%;
     height: 100%;
     display: flex;
     justify-content: center;
-    position:fixed;
+    position: fixed;
     transition: 850ms;
     left: -100%;
-    top: 10%;
+    top: 0%;
 
-    
+
 }
 
 .nav-menu.active {
@@ -33,7 +26,7 @@
     list-style: none;
 }
 
-.nav-text a{
+.nav-text a {
     text-decoration: none;
     color: aliceblue;
     font-size: 18px;
@@ -45,13 +38,14 @@
     border-radius: 4px;
 }
 
-.nav-text a:hover{
+.nav-text a:hover {
     background-color: #34495c;
 }
 
 .nav-menu-items {
     width: 100%;
-    
+
+
 }
 
 .navbar-toggle {

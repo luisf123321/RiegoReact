@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Link, Outlet } from "react-router-dom";
 const Riegos = () => {
 
@@ -8,11 +8,11 @@ const Riegos = () => {
 
 
     return (
-        <div className="container-fluid" style={{ "padding-left": "18%", "padding-top": "5%" }} >
-            <div className="row-fluid ">
+        <div className="container-fluid pt-5" style={{ "padding-left": "18%" }} >
+            <div className="row-fluid pt-4 ">
                 <div className="col-12  py-3">
                     <div className='row mt-2 mx-2 px-5'>
-                    <div className='col d-grid'>
+                        <div className='col d-grid'>
                             <Link className='btn text-white' style={{ "background": "#2c4464" }} to="riego_admins" >Aplicación  de riego</Link>
                         </div>
                         <div className='col d-grid'>

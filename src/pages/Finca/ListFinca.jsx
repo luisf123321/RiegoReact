@@ -69,18 +69,18 @@ const ListFinca = () => {
 
             {
                 viewData ?
-                    <div>
-                        <div className="px-2 " >
+                    <div className=' '>
+                        <div className="px-2" >
                             <h2 className="text-primary fs-5" > Total de fincas registradas: {' ' + dataFincas.length} </h2>
                         </div>
-                        <div>{cul}</div>
+                        <div className='row'>{cul}</div>
                     </div>
                     :
                     <div className='row'>
                         <h2>No tiene fincas registradas</h2>
                         <p>Por favor crear una finca</p>
                     </div>
-            } :
+            }
 
 
 

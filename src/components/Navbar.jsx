@@ -73,8 +73,8 @@ function Navbar() {
                     </div>
                 </div>
             </div>
-            <nav className={'nav-menu active '} style={{ "background": "#2a3e55" }} >
-                <ul className='nav-menu-items mt-3' onClick={showSidebar}>
+            <nav className={'nav-menu active mt-4'} style={{ "background": "#2a3e55" }} >
+                <ul className='nav-menu-items mt-5' onClick={showSidebar}>
                     {
                         sidebardata.map((data, index) => {
                             return (
